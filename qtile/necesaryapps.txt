@@ -1,0 +1,15 @@
+rofi
+amixer
+nm-applet
+brave
+alacritty
+feh
+picom
+dunst
+JetBrains Mono Nerd Font
+Hasklug Nerd Font
+Ubuntu Mono Nerd Font
+ranger
+ueberzug
+betterlockscreen
+nordic-wallpaper

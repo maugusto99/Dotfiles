@@ -5,7 +5,7 @@
 ;; (setq doom-themes-enable-bold t
 ;;       doom-themes-enable-italic t)
 
-(setq org-directory "~/org/")
+(setq org-directory "~/Documents/org/")
 
 (setq display-line-numbers-type t)
 
@@ -14,22 +14,17 @@
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
 
-
-
 ;; add bullets in org mode
 (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
 
 ;; Fonts
-;;; Add to ~/.doom.d/config.el
-(setq doom-font (font-spec :family "Hasklug Nerd Font" :size 15 :weight 'regular)
-      doom-variable-pitch-font (font-spec :family "Roboto" :size 14)
-      doom-unicode-font (font-spec :family "Hasklug Nerd Font" :size 11 :weight 'regular)
-      doom-big-font (font-spec :family "Hasklug Nerd Font" :size 20))
-
+(setq doom-font (font-spec :family "JetBrains Mono" :size 15 :weight 'medium)
+      doom-variable-pitch-font (font-spec :family "Roboto" :size 15)
+      doom-unicode-font (font-spec :family "JetBrains Mono" :size 15)
+      doom-big-font (font-spec :family "JetBrains Mono" :size 20))
 (after! doom-themes
   (setq doom-themes-enable-bold t
         doom-themes-enable-italic t))
-
 (custom-set-faces!
   '(font-lock-comment-face :slant italic)
   '(font-lock-keyword-face :slant italic))
@@ -43,8 +38,9 @@
 (global-set-key (kbd "<C-wheel-down>") 'text-scale-decrease)
 
 
+
 ;; Set Dashboard to match the theme
-(setq fancy-splash-image "~/Imágenes/icons/emacs-small.png")
+(setq fancy-splash-image "/home/augustom/.config/doom/doom-nord.png")
 (custom-set-faces!
   '(doom-dashboard-banner :inherit)
   '(doom-dashboard-footer :inherit font-lock-constant-face)
@@ -52,7 +48,6 @@
   '(doom-dashboard-loaded :inherit font-lock-warning-face)
   '(doom-dashboard-menu-desc :inherit font-lock-string-face)
   '(doom-dashboard-menu-title :inherit font-lock-function-name-face))
-
 
 ;; Page Scrolling
 (setq scroll-conservatively 101) ;; value greater than 100 gets rid of half page jumping
@@ -66,14 +61,11 @@
 
 (setq global-prettify-symbols-mode t)
 
-
 ;; Bookmarks
 (map! :leader
       (:prefix ("b". "buffer")
        :desc "List bookmarks" "L" #'list-bookmarks
        :desc "Save current bookmarks to bookmark file" "w" #'bookmark-save))
-
-
 
 ;; Ibuffer settings
 (evil-define-key 'normal ibuffer-mode-map
@@ -86,3 +78,11 @@
   (kbd "g h") 'ibuffer-do-kill-lines
   (kbd "g H") 'ibuffer-update)
 
+(map! :leader
+      :desc "Find files with fd" "s z" #'+vertico/consult-fd
+      )
+
+(add-to-list 'initial-frame-alist '(fullscreen . maximized))
+
+
+(add-hook 'python-mode-hook 'anaconda-mode)

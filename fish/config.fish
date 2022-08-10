@@ -59,3 +59,4 @@ alias cat="bat --theme=Nord"
 alias ag="ase gui"
 alias vesta="/storage/Applications/VESTA-gtk3/VESTA"
 alias wget="wget --hsts-file=$XDG_CACHE_HOME/wget-hsts"
+

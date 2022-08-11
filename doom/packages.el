@@ -50,4 +50,3 @@
 ;(unpin! t)
 
 (package! org-bullets)
-(package! rainbow-mode)

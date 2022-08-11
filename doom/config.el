@@ -79,7 +79,7 @@
   (kbd "g H") 'ibuffer-update)
 
 (map! :leader
-      :desc "Find files with fd" "s z" #'+vertico/consult-fd
+      :desc "Find files with fzf" "s z" 'counsel-fzf
       )
 
 (add-to-list 'initial-frame-alist '(fullscreen . maximized))

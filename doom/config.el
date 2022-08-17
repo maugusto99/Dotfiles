@@ -1,3 +1,5 @@
+;; Configuration doom emacs
+
 (setq user-full-name "Augusto Musetti"
       user-mail-address "musettiaugusto@gmail.com")
 

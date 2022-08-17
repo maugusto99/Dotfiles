@@ -32,15 +32,19 @@ grub efibootmgr
 *** paquetes para configuracion de red
 networkmanager network-manager-applet dialog wpa_supplicant
 *** paquetes importantes para compatibilidad de software
-base-devel linux-headers avahi
+base-devel linux-headers avahi nss-mdns
 *** Crear carpetas para el usuario (si instalo un DE no hace falta)
 xdg-user-dirs xdg-utils
 *** paquetes para manejar filesystem virtuales
 gvfs gvfs-smb nfs-utils inetutils dnsutils
-*** utilidades bluetooth
+*** Bluetooth
 bluez bluez-utils
-*** utilidades impresora
-cups hplip
+*** Impresora
+cups cups-filters cups-pk-helper libcups python-pycups system-config-printer hplip
+add to /etc/nsswitch.conf
+#+begin_export ascii
+hosts: mymachines mdns_minimal [NOTFOUND=return] resolve [!UNAVAIL=return] files myhostname dns
+#+end_export
 *** Audio
 alsa-utils pipewire pipewire-alsa pipewire-pulse pipewire-jack
 *** terminal utilidades
@@ -53,7 +57,7 @@ reflector bridge-utils dnsmasq openbsd-netcat sof-firmware nss-mdns os-prober mt
 nvidia nvidia-utils nvidia-settings
 *** Actualizo microcode para intel
 intel-ucode
-***  Bateria notebook
+*** Bateria notebook
 acpi acpi_call tlp
 *** Arch utilities
 archlinux-contrib pacutils pacman-contrib

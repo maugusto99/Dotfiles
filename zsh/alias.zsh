@@ -1,20 +1,22 @@
 #Aliases
 # vim and emacs
-alias vi="lvim"
+alias vi="nvim"
 alias vdiff="nvim -d"
 
-# Changing "ls" to "exa"
-alias ll='ls -al --color=auto --group-directories-first' # my preferred listing
-alias la='ls -a --color=auto --group-directories-first'  # all files and dirs
-alias ls='ls --color=auto --group-directories-first'  # visible files
+
+# ls
+alias ll='exa -alh --color=auto --group-directories-first' # my preferred listing
+alias la='exa -a --color=auto --group-directories-first'  # all files and dirs
+alias ls='exa --color=auto --group-directories-first'  # visible files
+
 alias .1='cd ..'
 alias .2='cd ../..'
 alias .3='cd ../../../'
 
 # Colorize grep output (good for log files)
 alias grep='rg --color=auto'
-alias egrep='erg --color=auto'
-alias fgrep='frg --color=auto'
+alias egrep='rg -e --color=auto'
+alias fgrep='rg -f --color=auto'
 
 # confirm before overwriting something
 alias cp="cp -i"

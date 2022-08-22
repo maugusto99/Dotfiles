@@ -1,14 +1,9 @@
-;; Configuration doom emacs
-
 (setq user-full-name "Augusto Musetti"
       user-mail-address "musettiaugusto@gmail.com")
 
 (setq doom-theme 'doom-nord)
-;; (setq doom-themes-enable-bold t
-;;       doom-themes-enable-italic t)
 
 (setq org-directory "~/Documents/org/")
-
 (setq display-line-numbers-type t)
 
 ;; Disabled menu bar and scroll bar
@@ -16,30 +11,19 @@
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
 
-;; add bullets in org mode
+;; Add bullets in org mode
 (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
 
 ;; Fonts
-(setq doom-font (font-spec :family "JetBrains Mono" :size 15 :weight 'medium)
-      doom-variable-pitch-font (font-spec :family "Roboto" :size 15)
-      doom-unicode-font (font-spec :family "JetBrains Mono" :size 15)
-      doom-big-font (font-spec :family "JetBrains Mono" :size 20))
+(setq doom-font (font-spec :family "JetBrains Mono" :size 14 )
+      doom-variable-pitch-font (font-spec :family "Inter" :size 14)
+      doom-big-font (font-spec :family "JetBrains Mono" :size 24 ))
 (after! doom-themes
   (setq doom-themes-enable-bold t
         doom-themes-enable-italic t))
 (custom-set-faces!
   '(font-lock-comment-face :slant italic)
   '(font-lock-keyword-face :slant italic))
-
-
-
-;; zoom in/out like we do everywhere else.
-(global-set-key (kbd "C-=") 'text-scale-increase)
-(global-set-key (kbd "C--") 'text-scale-decrease)
-(global-set-key (kbd "<C-wheel-up>") 'text-scale-increase)
-(global-set-key (kbd "<C-wheel-down>") 'text-scale-decrease)
-
-
 
 ;; Set Dashboard to match the theme
 (setq fancy-splash-image "/home/augustom/.config/doom/doom-nord.png")
@@ -63,11 +47,18 @@
 
 (setq global-prettify-symbols-mode t)
 
-;; Bookmarks
+(use-package octave-mode
+  :mode "\\.m\\'")
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Add personal keymaps
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 (map! :leader
-      (:prefix ("b". "buffer")
-       :desc "List bookmarks" "L" #'list-bookmarks
-       :desc "Save current bookmarks to bookmark file" "w" #'bookmark-save))
+      :desc "Find files with fzf" "s z" 'counsel-fzf
+      ;; :desc "Find expresions with rg" "s g" 'counsel-rg
+      )
 
 ;; Ibuffer settings
 (evil-define-key 'normal ibuffer-mode-map
@@ -80,10 +71,17 @@
   (kbd "g h") 'ibuffer-do-kill-lines
   (kbd "g H") 'ibuffer-update)
 
+;; Bookmarks
 (map! :leader
-      :desc "Find files with fzf" "s z" 'counsel-fzf
-      )
+      (:prefix ("b". "buffer")
+       :desc "List bookmarks" "L" #'list-bookmarks
+       :desc "Save current bookmarks to bookmark file" "w" #'bookmark-save))
 
+;; zoom in/out like we do everywhere else.
+(global-set-key (kbd "C-=") 'text-scale-increase)
+(global-set-key (kbd "C--") 'text-scale-decrease)
+(global-set-key (kbd "<C-wheel-up>") 'text-scale-increase)
+(global-set-key (kbd "<C-wheel-down>") 'text-scale-decrease)
 (add-to-list 'initial-frame-alist '(fullscreen . maximized))
 
 

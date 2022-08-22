@@ -6,9 +6,9 @@
 # Repository: https://github.com/arcticicestudio/nord-dircolors
 # License:    MIT
 
-COLOR tty
+#COLOR tty
 
-# TERM alacritty
+TERM alacritty
 # TERM alacritty-direct
 # TERM ansi
 # TERM *color*
@@ -49,8 +49,8 @@ COLOR tty
 # TERM xterm*
 # TERM xterm-color
 # TERM xterm-88color
-TERM xterm-256color
-TERM xterm-kitty
+#TERM xterm-256color
+# TERM xterm-kitty
 
 #+-----------------+
 #+ Global Defaults +

@@ -15,9 +15,9 @@
 (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
 
 ;; Fonts
-(setq doom-font (font-spec :family "JetBrains Mono" :size 14 )
+(setq doom-font (font-spec :family "Source Code Pro" :size 15 )
       doom-variable-pitch-font (font-spec :family "Inter" :size 14)
-      doom-big-font (font-spec :family "JetBrains Mono" :size 24 ))
+      doom-big-font (font-spec :family "Source Code Pro" :size 24 ))
 (after! doom-themes
   (setq doom-themes-enable-bold t
         doom-themes-enable-italic t))

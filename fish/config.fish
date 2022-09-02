@@ -10,9 +10,9 @@ set -e fish_user_paths
 set -U fish_user_paths $HOME/.local/bin /storage/Applications /storage/Applications/vaspkit.1.3.5/bin $fish_user_paths
 
 ### EXPORT ###
-set fish_greeting # Supresses fish's intro message
+set -U fish_greeting # Supresses fish's intro message
 # set TERM "xterm-256color"                         # Sets the terminal type
-set EDITOR nvim # $EDITOR use Emacs in terminal
+set -Ux EDITOR nvim # $EDITOR use Emacs in terminal
 set BROWSER firefox
 set TERMINAL alacritty
 set LESSHISTFILE -

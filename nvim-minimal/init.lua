@@ -1,0 +1,7 @@
+require('options')
+require('keymaps')
+require('plugins')
+require('nord_color')
+require('lualine_conf')
+require('bufferline-conf')
+require('treesitter-conf')

@@ -29,6 +29,10 @@ keymap("n", "<m-Left>", ":tabprevious<cr>", opts)
 -- Delete buffer
 keymap("n", "<leader>bk", ":bdelete<cr>", opts)
 
+-- Buffer movement
+keymap("n", "<leader>bn", ":bnext<cr>", opts)
+keymap("n", "<leader>bp", ":bprevious<cr>", opts)
+
 -- Resize with arrows
 keymap("n", "<C-Up>", ":resize -2<CR>", opts)
 keymap("n", "<C-Down>", ":resize +2<CR>", opts)
@@ -48,10 +52,11 @@ keymap("v", "p", '"_dP', opts)
 -- alt binds
 keymap("n", "<m-s>", "<cmd>split<cr>", opts)
 keymap("n", "<m-v>", "<cmd>vsplit<cr>", opts)
--- keymap("n", "<m-q>", ":bdelete<cr>", opts)
 
-keymap("n", "<leader>ff", ":Telescope find_files hidden=true<cr>", opts)
+-- Telescope
+keymap("n", "<leader>ff", ":Telescope fd hidden=true<cr>", opts)
 keymap("n", "<leader>fg", ":Telescope live_grep<cr>", opts)
 keymap("n", "<leader>bb", ":Telescope buffers<cr>", opts)
 keymap("n", "<leader>fh", ":Telescope help_tags<cr>", opts)
 keymap("n", "<leader>fb", ":Telescope file_browser<CR>", opts)
+keymap("n", "<leader>fz", ":Telescope current_buffer_fuzzy_find<CR>", opts)

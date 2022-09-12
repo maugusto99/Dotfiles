@@ -24,13 +24,20 @@ return require("packer").startup(function(use)
 		run = "TSUpdate",
 	})
 
+  use 'nvim-treesitter/nvim-treesitter-context'
+
+  use 'p00f/nvim-ts-rainbow'
+
+	use({ "kyazdani42/nvim-web-devicons" })
+
+  use({'norcalli/nvim-colorizer.lua'})
+  require'colorizer'.setup()
+
 	use({
 		"nvim-telescope/telescope.nvim",
 		tag = "0.1.0",
 		requires = { { "nvim-lua/plenary.nvim" } },
 	})
-
-	use({ "kyazdani42/nvim-web-devicons" })
 
 	use({ "nvim-telescope/telescope-file-browser.nvim" })
 

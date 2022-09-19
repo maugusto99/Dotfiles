@@ -5,6 +5,7 @@ return require("packer").startup(function(use)
 
 	use("shaunsingh/nord.nvim") -- Nord theme
 
+
 	use({ -- Comment nvim
 		"numToStr/Comment.nvim",
 		config = function()
@@ -12,7 +13,7 @@ return require("packer").startup(function(use)
 		end,
 	})
 
-	use({
+	use({ -- Lualine
 		"nvim-lualine/lualine.nvim",
 		requires = { "kyazdani42/nvim-web-devicons", opt = true },
 	})
@@ -30,8 +31,10 @@ return require("packer").startup(function(use)
 
 	use({ "kyazdani42/nvim-web-devicons" })
 
-  use({'norcalli/nvim-colorizer.lua'})
-  require'colorizer'.setup()
+  use({
+    'norcalli/nvim-colorizer.lua',
+    require'colorizer'.setup(),
+  })
 
 	use({
 		"nvim-telescope/telescope.nvim",
@@ -39,8 +42,14 @@ return require("packer").startup(function(use)
 		requires = { { "nvim-lua/plenary.nvim" } },
 	})
 
-	use({ "nvim-telescope/telescope-file-browser.nvim" })
-
-	require("telescope").load_extension("file_browser")
+  use({
+    "folke/which-key.nvim",
+    config = function()
+      require("which-key").setup {}
+    end
+  })
+  use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+  
+  -- use 'dstein64/vim-startuptime'
 
 end)

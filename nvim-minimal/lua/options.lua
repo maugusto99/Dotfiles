@@ -1,7 +1,6 @@
 local options = {
 	backup = false, -- creates a backup file
 	clipboard = { "unnamedplus" },
-	cmdheight = 1, -- more space in the neovim command line for displaying messages
 	completeopt = { "menuone", "noselect" }, -- mostly just for cmp
 	fileencoding = "utf-8", -- the encoding written to a file
 	hlsearch = true, -- highlight all matches on previous search pattern
@@ -16,7 +15,7 @@ local options = {
 	splitright = true, -- force all vertical splits to go to the right of current window
 	swapfile = false, -- creates a swapfile
 	termguicolors = true, -- set term gui colors (most terminals support this)
-	timeoutlen = 1000, -- time to wait for a mapped sequence to complete (in milliseconds)
+	timeoutlen = 800, -- time to wait for a mapped sequence to complete (in milliseconds)
 	undofile = true, -- enable persistent undo
 	updatetime = 0, -- faster completion (4000ms default)
 	writebackup = false, -- if a file is being edited by another program (or was written to file while editing with another program), it is not allowed to be edited
@@ -35,6 +34,7 @@ local options = {
 	scrolloff = 8, -- is one of my fav
 	sidescrolloff = 8,
 	termguicolors = true,
+	ttyfast = true,
 }
 
 for k, v in pairs(options) do
@@ -49,3 +49,10 @@ vim.opt.shortmess:append("c")
 
 vim.cmd("set whichwrap+=<,>,[,],h,l")
 vim.cmd([[set iskeyword+=-]])
+
+-- netrw options (for display the banner press I)
+vim.g.netrw_banner = 0
+vim.g.netrw_winsize = 30
+vim.g.netrw_keepdir = 0
+vim.g.netrw_localcopydircmd = "cp -r"
+-- vim.g.netrw_liststyle = 3

@@ -17,21 +17,21 @@ set -Ux TERMINAL kitty
 set -Ux LESSHISTFILE -
 set -x LS_COLORS dir_colors.sh
 
-
 ### SET EITHER DEFAULT EMACS MODE OR VI MODE ###
 function fish_user_key_bindings
     fish_default_key_bindings
+    # fish_vi_key_bindings
+    fzf_key_bindings
 end
 
 #Aliases
-# vim and emacs
+# vim 
 alias vi="nvim"
-alias vdiff="nvim -d"
 
 # ls
 alias ll='exa -alh --color=auto --group-directories-first'
-alias la='exa -a --color=auto --icons --group-directories-first'
-alias ls='exa --color=auto --icons --group-directories-first'
+alias la='exa -a --color=auto --group-directories-first --icons'
+alias ls='exa --color=auto --group-directories-first --icons'
 
 # Colorize grep output (good for log files)
 alias grep='rg --color=auto'
@@ -49,14 +49,14 @@ alias ag="ase gui"
 alias vesta="/storage/Applications/VESTA-gtk3/VESTA"
 alias wget="wget --hsts-file=$XDG_CACHE_HOME/wget-hsts"
 
-set fzf_history_opts --with-nth=4..
+set -x FZF_DEFAULT_COMMAND 'fd --strip-cwd-prefix '
+set -x FZF_CTRL_T_COMMAND $FZF_DEFAULT_COMMAND '--hidden --type f'
+set -x FZF_ALT_C_COMMAND $FZF_DEFAULT_COMMAND '--hidden --type d --follow'
 set -x FZF_DEFAULT_OPTS '
     --height=70%
-    --color=fg:#e5e9f0,bg:#3b4252,hl:#81a1c1
-    --color=fg+:#e5e9f0,bg+:#3b4252,hl+:#81a1c1
-    --color=info:#eacb8a,prompt:#bf6069,pointer:#b48dac
-    --color=marker:#a3be8b,spinner:#b48dac,header:#a3be8b'
+    --layout reverse
+    --color fg:#D8DEE9,bg:#2E3440,hl:#A3BE8C,fg+:#D8DEE9,bg+:#434C5E,hl+:#A3BE8C
+    --color pointer:#BF616A,info:#4C566A,spinner:#4C566A,header:#4C566A,prompt:#81A1C1,marker:#EBCB8B'
 
 
-# starship init fish | source
 

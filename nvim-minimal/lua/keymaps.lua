@@ -45,7 +45,7 @@ keymap("v", ">", ">gv", opts)
 
 -- Telescope
 keymap("n", "<leader>ff", ":Telescope find_files<cr>", opts)
-keymap("n", "<leader>fh", ":Telescope fd hidden=true<cr>", opts)
+keymap("n", "<leader>fh", ":Telescope find_files hidden=true<cr>", opts)
 keymap("n", "<leader>fg", ":Telescope live_grep<cr>", opts)
 keymap("n", "<leader>bb", ":Telescope buffers<cr>", opts)
 keymap("n", "<leader>hh", ":Telescope help_tags<cr>", opts)

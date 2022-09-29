@@ -49,7 +49,12 @@ return require("packer").startup(function(use)
     end
   })
   use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
-  
-  -- use 'dstein64/vim-startuptime'
+
+  use {
+    'lewis6991/gitsigns.nvim',
+    config = function()
+      require('gitsigns').setup()
+    end
+  }
 
 end)

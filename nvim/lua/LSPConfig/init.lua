@@ -70,9 +70,12 @@ for _, lsp in ipairs(servers) do
 end
 
 require'lspconfig'.fortls.setup{
-    settings = {
-        ["fortran-ls"] = {
-            variableHover = true
-        },
-    },
+    cmd = {
+        'fortls',
+        '--hover_signature',
+        '--hover_language=fortran',
+        '--use_signature_help',
+        '--max_line_lenght',
+        '--max_comment_line_lenght',
+  }
 }

@@ -5,6 +5,7 @@ return require("packer").startup(function(use)
 
 	use("shaunsingh/nord.nvim") -- Nord theme
 
+  use 'folke/tokyonight.nvim'
 
 	use({ -- Comment nvim
 		"numToStr/Comment.nvim",
@@ -60,7 +61,7 @@ return require("packer").startup(function(use)
   use 'tpope/vim-fugitive'                                                             -- Git commands in nvim
 
   use 'lukas-reineke/indent-blankline.nvim'                                            -- Add indentation guides even on blank lines
-  
+
   use 'neovim/nvim-lspconfig'                                                          -- Collection of configurations for built-in LSP client
   use 'williamboman/mason.nvim'                                                        -- Manage external editor tooling i.e LSP servers
   use 'williamboman/mason-lspconfig.nvim'                                              -- Automatically install language servers to stdpath

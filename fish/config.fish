@@ -20,7 +20,6 @@ set -x LS_COLORS dir_colors.sh
 ### SET EITHER DEFAULT EMACS MODE OR VI MODE ###
 function fish_user_key_bindings
     fish_default_key_bindings
-    # fish_vi_key_bindings
     fzf_key_bindings
 end
 
@@ -46,17 +45,22 @@ alias rm='rm -i'
 # change bat for cat
 alias cat="bat --theme=Nord"
 alias ag="ase gui"
-alias vesta="/storage/Applications/VESTA-gtk3/VESTA"
 alias wget="wget --hsts-file=$XDG_CACHE_HOME/wget-hsts"
 
 set -x FZF_DEFAULT_COMMAND 'fd --strip-cwd-prefix '
 set -x FZF_CTRL_T_COMMAND $FZF_DEFAULT_COMMAND '--hidden --type f'
-set -x FZF_ALT_C_COMMAND $FZF_DEFAULT_COMMAND '--hidden --type d --follow'
-set -x FZF_DEFAULT_OPTS '
-    --height=70%
-    --layout reverse
-    --color fg:#D8DEE9,bg:#2E3440,hl:#A3BE8C,fg+:#D8DEE9,bg+:#434C5E,hl+:#A3BE8C
-    --color pointer:#BF616A,info:#4C566A,spinner:#4C566A,header:#4C566A,prompt:#81A1C1,marker:#EBCB8B'
+set -x FZF_ALT_C_COMMAND $FZF_DEFAULT_COMMAND '--hidden --type d'
+# set -x FZF_DEFAULT_OPTS '
+#     --height=70%
+#     --layout reverse
+#     --color fg:#D8DEE9,bg:#2E3440,hl:#A3BE8C,fg+:#D8DEE9,bg+:#434C5E,hl+:#A3BE8C
+#     --color pointer:#BF616A,info:#4C566A,spinner:#4C566A,header:#4C566A,prompt:#81A1C1,marker:#EBCB8B'
+set -x FZF_DEFAULT_OPTS ' 
+  --height=70%
+  --layout reverse
+	--color=fg:#c0caf5,bg:#1a1b26,hl:#bb9af7
+	--color=fg+:#c0caf5,bg+:#1a1b26,hl+:#7dcfff
+	--color=info:#7aa2f7,prompt:#7dcfff,pointer:#7dcfff 
+	--color=marker:#9ece6a,spinner:#9ece6a,header:#9ece6a'
 
-
-
+zoxide init fish | source

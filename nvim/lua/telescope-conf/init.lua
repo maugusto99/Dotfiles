@@ -1,12 +1,11 @@
 require('telescope').load_extension('fzf')
 
-local actions = require "telescope.actions"
 
 require('telescope').setup{
 
   defaults = {
     previewer = false,
-    prompt_prefix = " ",
+    prompt_prefix = "  ",
     selection_caret = " ",
     layout_strategy = "vertical",
     sorting_strategy = "ascending",

@@ -131,6 +131,11 @@ _G.packer_plugins = {
     path = "/home/augustom/.local/share/nvim/site/pack/packer/start/nord.nvim",
     url = "https://github.com/shaunsingh/nord.nvim"
   },
+  nvim = {
+    loaded = true,
+    path = "/home/augustom/.local/share/nvim/site/pack/packer/start/nvim",
+    url = "https://github.com/catppuccin/nvim"
+  },
   ["nvim-cmp"] = {
     loaded = true,
     path = "/home/augustom/.local/share/nvim/site/pack/packer/start/nvim-cmp",
@@ -185,11 +190,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/augustom/.local/share/nvim/site/pack/packer/start/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
-  },
-  ["tokyonight.nvim"] = {
-    loaded = true,
-    path = "/home/augustom/.local/share/nvim/site/pack/packer/start/tokyonight.nvim",
-    url = "https://github.com/folke/tokyonight.nvim"
   },
   ["vim-fugitive"] = {
     loaded = true,

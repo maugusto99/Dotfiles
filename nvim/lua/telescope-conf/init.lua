@@ -18,7 +18,7 @@ require('telescope').setup{
   pickers = {
 
     find_files = {
-      find_command = { "fd", "--strip-cwd-prefix","--type", "f"},
+      find_command = { "fd", "--strip-cwd-prefix","--type", "f","--no-ignore-vcs"},
     },
 
     live_grep = {

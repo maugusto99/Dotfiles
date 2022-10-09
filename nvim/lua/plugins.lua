@@ -5,7 +5,7 @@ return require("packer").startup(function(use)
 
 	use("shaunsingh/nord.nvim") -- Nord theme
 
-  use 'folke/tokyonight.nvim'
+  use("catppuccin/nvim") -- catppuccin theme
 
 	use({ -- Comment nvim
 		"numToStr/Comment.nvim",

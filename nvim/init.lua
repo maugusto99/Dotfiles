@@ -1,7 +1,7 @@
 require('options')
 require('keymaps')
 require('plugins')
-require('TokyoNight-conf')
+require('Catppuccin-conf')
 -- require('nord-conf')
 require('telescope-conf')
 require('bufferline-conf')
@@ -9,4 +9,3 @@ require('treesitter-conf')
 require('lualine-conf')
 require('LSPConfig')
 require('Nvimcmp-conf')
-

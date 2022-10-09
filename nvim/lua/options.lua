@@ -33,7 +33,6 @@ local options = {
 	wrap = false, -- display lines as one long line
 	scrolloff = 8, -- is one of my fav
 	sidescrolloff = 8,
-	termguicolors = true,
 	ttyfast = true,
 }
 
@@ -54,6 +53,3 @@ vim.g.netrw_banner = 0
 vim.g.netrw_winsize = 30
 vim.g.netrw_keepdir = 0
 vim.g.netrw_localcopydircmd = "cp -r"
-
--- Font for neovide
-vim.opt.guifont = { "Fira Code", ":h11" }

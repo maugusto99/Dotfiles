@@ -14,7 +14,6 @@ local options = {
 	splitbelow = true, -- force all horizontal splits to go below current window
 	splitright = true, -- force all vertical splits to go to the right of current window
 	swapfile = false, -- creates a swapfile
-	termguicolors = true, -- set term gui colors (most terminals support this)
 	timeoutlen = 800, -- time to wait for a mapped sequence to complete (in milliseconds)
 	undofile = true, -- enable persistent undo
 	updatetime = 0, -- faster completion (4000ms default)
@@ -34,6 +33,7 @@ local options = {
 	scrolloff = 8, -- is one of my fav
 	sidescrolloff = 8,
 	ttyfast = true,
+	termguicolors = true, -- set term gui colors (most terminals support this)
 }
 
 for k, v in pairs(options) do

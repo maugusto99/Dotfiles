@@ -1,11 +1,12 @@
 vim.cmd([[packadd packer.nvim]])
 
 return require("packer").startup(function(use)
+
 	use("wbthomason/packer.nvim") -- Have packer manage itself
 
 	use("shaunsingh/nord.nvim") -- Nord theme
 
-  use("catppuccin/nvim") -- catppuccin theme
+  use { "ellisonleao/gruvbox.nvim" }
 
 	use({ -- Comment nvim
 		"numToStr/Comment.nvim",
@@ -19,7 +20,7 @@ return require("packer").startup(function(use)
 		requires = { "kyazdani42/nvim-web-devicons", opt = true },
 	})
 
-	use({ "akinsho/bufferline.nvim", tag = "v2.*", requires = "kyazdani42/nvim-web-devicons" })
+	use({ "akinsho/bufferline.nvim", requires = "kyazdani42/nvim-web-devicons" })
 
 	use({
 		"nvim-treesitter/nvim-treesitter",
@@ -32,23 +33,11 @@ return require("packer").startup(function(use)
 
 	use({ "kyazdani42/nvim-web-devicons" })
 
-  use({
-    'norcalli/nvim-colorizer.lua',
-    require'colorizer'.setup(),
-  })
-
 	use({
 		"nvim-telescope/telescope.nvim",
-		tag = "0.1.0",
 		requires = { { "nvim-lua/plenary.nvim" } },
 	})
 
-  use({
-    "folke/which-key.nvim",
-    config = function()
-      require("which-key").setup {}
-    end
-  })
   use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
 
   use {
@@ -58,6 +47,20 @@ return require("packer").startup(function(use)
     end
   }
 
+  use {'norcalli/nvim-colorizer.lua',
+      require'colorizer'.setup()
+  }
+
+  use {
+    "folke/which-key.nvim",
+    config = function()
+      require("which-key").setup {
+        -- your configuration comes here
+        -- or leave it empty to use the default settings
+        -- refer to the configuration section below
+      }
+    end
+  }
   use 'tpope/vim-fugitive'                                                             -- Git commands in nvim
 
   use 'lukas-reineke/indent-blankline.nvim'                                            -- Add indentation guides even on blank lines
@@ -67,5 +70,7 @@ return require("packer").startup(function(use)
   use 'williamboman/mason-lspconfig.nvim'                                              -- Automatically install language servers to stdpath
   use { 'hrsh7th/nvim-cmp', requires = { 'hrsh7th/cmp-nvim-lsp' } }                    -- Autocompletion
   use { 'L3MON4D3/LuaSnip', requires = { 'saadparwaiz1/cmp_luasnip' } }                -- Snippet Engine and Snippet Expansion
+
+  use 'vifm/vifm.vim'
 
 end)

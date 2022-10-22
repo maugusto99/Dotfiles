@@ -127,10 +127,11 @@ command! df df -h %m 2> /dev/null
 command! diff nvim -d %f %F
 command! zip zip -r %c.zip %f
 command! run !! ./%f
-command! make !!make %a
+command! make !!make %a %c
 command! mkcd :mkdir %a | cd %a
-command! vgrep vim "+grep %a"
+command! vgrep nvim "+grep %a %f"
 command! reload :write | restart full
+command! open nvim -p %b
 
 " ------------------------------------------------------------------------------
 " File types association
@@ -472,11 +473,6 @@ endif
 " Open editor to edit vifmrc and apply settings after returning to vifm
 nnoremap ,c :write | edit $MYVIFMRC | restart full<cr>
 
-" Open gvim to edit vifmrc
-if $DISPLAY && executable('gvim')
-    nnoremap ,C :!gvim --remote-tab-silent $MYVIFMRC &<cr>
-endif
-
 " Toggle wrap setting on ,w key
 nnoremap ,w :set wrap!<cr>
 
@@ -500,9 +496,10 @@ nnoremap <c-u> <c-w>x
 " Various customization examples
 " ------------------------------------------------------------------------------
 
-" Use ag (the silver searcher) instead of grep
-" set grepprg='ag --line-numbers %i %a %s'
+" Use ripgrep instead of grep
+" set grepprg='rg -n %i %a %s'
 
+" set findprg="rg --files %a %s"
 " Add additional place to look for executables
 " let $PATH = $HOME.'/bin/fuse:'.$PATH
 
@@ -524,6 +521,6 @@ nnoremap <c-u> <c-w>x
 " ------------------------------------------------------------------------------
 " Icon decorations example
 " ------------------------------------------------------------------------------
-
+set previewoptions+=graphicsdelay:0
 " https://github.com/cirala/vifm_devicons
 source /home/augustom/.config/vifm/scripts/icons.vifm

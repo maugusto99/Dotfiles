@@ -106,6 +106,11 @@ _G.packer_plugins = {
     path = "/home/augustom/.local/share/nvim/site/pack/packer/start/gitsigns.nvim",
     url = "https://github.com/lewis6991/gitsigns.nvim"
   },
+  ["gruvbox.nvim"] = {
+    loaded = true,
+    path = "/home/augustom/.local/share/nvim/site/pack/packer/start/gruvbox.nvim",
+    url = "https://github.com/ellisonleao/gruvbox.nvim"
+  },
   ["indent-blankline.nvim"] = {
     loaded = true,
     path = "/home/augustom/.local/share/nvim/site/pack/packer/start/indent-blankline.nvim",
@@ -130,11 +135,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/augustom/.local/share/nvim/site/pack/packer/start/nord.nvim",
     url = "https://github.com/shaunsingh/nord.nvim"
-  },
-  nvim = {
-    loaded = true,
-    path = "/home/augustom/.local/share/nvim/site/pack/packer/start/nvim",
-    url = "https://github.com/catppuccin/nvim"
   },
   ["nvim-cmp"] = {
     loaded = true,
@@ -190,6 +190,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/augustom/.local/share/nvim/site/pack/packer/start/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
+  },
+  ["vifm.vim"] = {
+    loaded = true,
+    path = "/home/augustom/.local/share/nvim/site/pack/packer/start/vifm.vim",
+    url = "https://github.com/vifm/vifm.vim"
   },
   ["vim-fugitive"] = {
     loaded = true,

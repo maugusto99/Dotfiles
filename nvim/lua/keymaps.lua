@@ -1,5 +1,6 @@
 -- Shorten function name
-local keymap = vim.api.nvim_set_keymap
+local keymap = vim.keymap.set
+-- local keymap = vim.api.nvim_set_keymap
 
 local opts = { noremap = true, silent = true }
 
@@ -52,9 +53,7 @@ keymap("n", "<leader>fh", ":Telescope help_tags<cr>", opts)
 keymap("n", "<leader>fz", ":Telescope current_buffer_fuzzy_find<CR>", opts)
 
 -- Diagnostics
-vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
-vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
-vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float)
-vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist)
-
-
+keymap('n', '[d', vim.diagnostic.goto_prev)
+keymap('n', ']d', vim.diagnostic.goto_next)
+keymap('n', '<leader>e', vim.diagnostic.open_float)
+keymap('n', '<leader>q', vim.diagnostic.setloclist)

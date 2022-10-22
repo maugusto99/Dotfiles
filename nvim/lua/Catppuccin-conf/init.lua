@@ -2,7 +2,7 @@ vim.g.catppuccin_flavour = "mocha"
 require("catppuccin").setup({
 	compile_path = vim.fn.stdpath("cache") .. "/catppuccin",
 	transparent_background = true,
-	term_colors = false,
+	term_colors = true,
 	dim_inactive = {
 		enabled = false,
 		shade = "dark",
@@ -11,9 +11,9 @@ require("catppuccin").setup({
 	styles = {
 		comments = { "italic" },
 		conditionals = { "italic" },
-		loops = {},
-		functions = {},
-		keywords = {},
+		loops = {"bold"},
+		functions = {"bold"},
+		keywords = {"bold"},
 		strings = {},
 		variables = {},
 		numbers = {},

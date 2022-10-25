@@ -1,0 +1,9 @@
+aura-bin
+dolphin-megasync-bin
+megasync-bin
+nerd-fonts-jetbrains-mono
+python-ase
+rtl8821ce-dkms-git
+timeshift-bin
+vesta
+visual-studio-code-bin

@@ -1,219 +1,105 @@
-adobe-source-han-sans-cn-fonts
-adobe-source-han-sans-jp-fonts
-adobe-source-han-sans-kr-fonts
-adobe-source-sans-fonts
-adobe-source-serif-fonts
-alacritty
-apparmor
-archlinux-contrib
-ark
-autoconf
-automake
-base
-bat
-binutils
-bison
-bluedevil
-bluez-utils
-breeze
-breeze-gtk
-btop
-btrfs-progs
-cups
-cups-pdf
-cups-pk-helper
-discover
-dolphin
-dolphin-plugins
-dosfstools
-drkonqi
-dua-cli
-efibootmgr
-exa
-fakeroot
-fd
-file
-findutils
-firefox
-firewalld
-fish
-flatpak
-flex
-fzf
-gawk
-gcc
-gcc-fortran
-gettext
-gimp
-git
-gnuplot
-grep
-groff
-grub
-grub-btrfs
-gst-plugin-pipewire
-gwenview
-gzip
-haruna
-hplip
-hunspell-es_ar
-inkscape
-intel-ucode
-inter-font
-ipython
-kactivitymanagerd
-kamera
-kamoso
-kcalc
-kcharselect
-kcron
-kde-cli-tools
-kde-gtk-config
-kdebugsettings
-kdeconnect
-kdecoration
-kdegraphics-thumbnailers
-kdeplasma-addons
-kdf
-kdialog
-keditbookmarks
-kgamma5
-khelpcenter
-khotkeys
-kinfocenter
-kio-gdrive
-kitty
-kmenuedit
-konsole
-kscreen
-kscreenlocker
-ksshaskpass
-ksystemlog
-ksystemstats
-ktorrent
-kvantum
-kwallet-pam
-kwalletmanager
-kwayland-integration
-kwin
-kwrited
-layer-shell-qt
-libkscreen
-libksysguard
-libreoffice-fresh-es
-libtool
-linux
-linux-firmware
-linux-headers
-linux-lts
-linux-lts-headers
-lua-language-server
-m4
-make
-man-db
-materia-gtk-theme
-milou
-mtools
-neofetch
-neovim
-networkmanager
-nextcloud-client
-noto-fonts-emoji
-nss-mdns
-nuspell
-octave
-okular
-openblas
-openssh
-os-prober
-oxygen-sounds
-pacman
-pacman-contrib
-pacutils
-patch
-pipewire-alsa
-plasma-browser-integration
-plasma-desktop
-plasma-disks
-plasma-firewall
-plasma-integration
-plasma-nm
-plasma-pa
-plasma-sdk
-plasma-systemmonitor
-plasma-thunderbolt
-plasma-vault
-plasma-wayland-protocols
-plasma-wayland-session
-plasma-workspace
-plasma-workspace-wallpapers
-plocate
-polkit-kde-agent
-powerdevil
-print-manager
-pulseaudio-alsa
-python-flask
-python-matplotlib
-python-numpy
-python-pandas
-python-pandas-datareader
-python-pip
-python-pyalsa
-python-pynvim
-python-scipy
-python-sympy
-reflector
-ripgrep
-rsync
-sddm-kcm
-sed
-sof-firmware
-spectacle
-spotify-launcher
-sudo
-system-config-printer
-systemsettings
-tealdeer
-texinfo
-texlive-bibtexextra
-texlive-bin
-texlive-core
-texlive-fontsextra
-texlive-formatsextra
-texlive-games
-texlive-humanities
-texlive-latexextra
-texlive-music
-texlive-pictures
-texlive-pstricks
-texlive-publishers
-texlive-science
-tk
-ttf-dejavu
-ttf-fira-code
-ttf-jetbrains-mono
-ttf-lato
-ttf-liberation
-ttf-roboto
-unrar
-unzip
-vifm
-vulkan-headers
-vulkan-intel
-vulkan-mesa-layers
-wget
-which
-wireplumber
-wl-clipboard
-xclip
-xdg-desktop-portal
-xdg-desktop-portal-gtk
-xdg-desktop-portal-kde
-xorg-xclipboard
-xsel
-zip
-zram-generator
-zsh
-zsh-autosuggestions
-zsh-completions
-zsh-syntax-highlighting
+adobe-source-han-sans-cn-fonts 2.004-1
+adobe-source-han-sans-jp-fonts 2.004-1
+adobe-source-han-sans-kr-fonts 2.004-1
+adobe-source-sans-fonts 3.046-1
+adobe-source-serif-fonts 4.004-2
+alacritty 0.11.0-1
+apparmor 3.1.1-1
+archlinux-contrib 20210710-1
+ark 22.08.3-1
+autoconf 2.71-1
+automake 1.16.5-1
+base 3-1
+bison 3.8.2-4
+bluez-utils 5.65-3
+btop 1.2.12-1
+cups-pdf 3.0.1-6
+debugedit 5.0-4
+dolphin-megasync-bin 3.6.6-2
+dolphin-plugins 22.08.3-1
+downgrade 11.2.1-1
+emacs 28.2-1
+exa 0.10.1-6
+fd 8.5.2-1
+firefox 106.0.5-1
+flex 2.6.4-3
+gdu 5.20.0-1
+gimp 2.10.32-2
+gwenview 22.08.3-1
+haruna 0.9.3-1
+hplip 1:3.22.10-1
+hunspell-es_ar 1:2.7-1
+intel-ucode 20220809-1
+inter-font 3.19-2
+kamoso 22.08.3-1
+kcalc 22.08.3-1
+kcharselect 22.08.3-1
+kcron 22.08.3-1
+kde-gtk-config 5.26.2-1
+kdebugsettings 22.08.3-1
+kdeplasma-addons 5.26.2-1
+kdf 22.08.3-1
+kdialog 22.08.3-1
+kgamma5 5.26.2-1
+khelpcenter 22.08.3-1
+khotkeys 5.26.2-1
+kio-gdrive 22.08.3-1
+kitty 0.26.4-2
+ksystemlog 22.08.3-1
+ktorrent 22.08.3-1
+kvantum 1.0.6-1
+kwallet-pam 5.26.2-1
+kwrited 5.26.2-1
+libreoffice-fresh-es 7.4.2-1
+linux-lts 5.15.77-1
+lua-language-server 3.5.6-1
+man-db 2.11.0-1
+materia-gtk-theme 20210322-2
+neofetch 7.1.0-2
+neovim 0.8.0-3
+nextcloud-client 2:3.6.1-2
+octave 7.3.0-1
+okular 22.08.3-1
+openssl-1.1 1.1.1.s-2
+pacutils 0.11.1-1
+paru-bin 1.11.1-1
+pkgconf 1.8.0-1
+plasma-browser-integration 5.26.2-1
+plasma-desktop 5.26.2-1
+plasma-disks 5.26.2-1
+plasma-firewall 5.26.2-1
+plasma-pa 5.26.2-1
+plasma-sdk 5.26.2-1
+plasma-systemmonitor 5.26.2-1
+plasma-thunderbolt 5.26.2-1
+plasma-vault 5.26.2-1
+plasma-wayland-protocols 1.9.0-1
+plasma-wayland-session 5.26.2-2
+print-manager 22.08.3-1
+python-ase 3.22.1-1
+python-pyalsa 1.2.7-1
+ranger 1.9.3-4
+reflector 2021.11-5
+ripgrep-all 0.9.6-3
+rtl8821ce-dkms-git 1.0.5.r149.g50c1b12-1
+sddm-kcm 5.26.2-1
+sof-firmware 2.2.2-1
+spectacle 22.08.3-1
+spotify-launcher 0.3.0-2
+starship 1.11.0-1
+tealdeer 1.6.1-1
+timeshift-bin 22.06.5-1
+ttf-fira-code 6.2-2
+ttf-jetbrains-mono 2.242-2
+ttf-lato 2.015-4
+ttf-roboto 2.138-4
+unzip 6.0-19
+vesta 3.5.7-1
+visual-studio-code-bin 1.73.0-1
+xorg-xclipboard 1.1.4-1
+zip 3.0-10
+zoxide 0.8.3-1
+zram-generator 1.1.2-1
+zsh-autosuggestions 0.7.0-1
+zsh-completions 0.34.0-2
+zsh-syntax-highlighting 0.7.1-1

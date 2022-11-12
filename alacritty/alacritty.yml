@@ -10,7 +10,9 @@ env:
   # each instance of Alacritty. If it is not present, alacritty will
   # check the local terminfo database and use `alacritty` if it is
   # available, otherwise `xterm-256color` is used.
+  # TERM: alacritty
   TERM: alacritty
+  # TERM: xterm-256color
 
 window:
   # Window dimensions (changes require restart)
@@ -34,8 +36,8 @@ window:
   # Blank space added around the window in pixels. This padding is scaled
   # by DPI and the specified value is always added at both opposing sides.
   padding:
-    x: 0
-    y: 0
+    x: 2
+    y: 2
 
   # Spread additional padding evenly around the terminal content.
   #dynamic_padding: true
@@ -44,8 +46,8 @@ window:
   #
   # Window opacity as a floating point number from `0.0` to `1.0`.
   # The value `0.0` is completely transparent and `1.0` is opaque.
-  opacity: 1.0
-  # opacity: 0.97
+  # opacity: 1.0
+  opacity: 0.94
 
   # Window decorations
   #
@@ -116,8 +118,8 @@ font:
     #   - (macOS) Menlo
     #   - (Linux/BSD) monospace
     #   - (Windows) Consolas
-    family: JetBrains Mono
-    style: regular
+    family: JetBrains Mono Nerd Font
+    style: Regular
 
   # Bold font face
   bold:
@@ -125,7 +127,7 @@ font:
     #
     # If the bold family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: JetBrains Mono
+    family: JetBrains Mono Nerd Font
     style: Bold
 
   # Italic font face
@@ -134,7 +136,7 @@ font:
     #
     # If the italic family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: JetBrains Mono
+    family: JetBrains Mono Nerd Font
     style: Italic
 
   # Bold italic font face
@@ -143,11 +145,11 @@ font:
     #
     # If the bold italic family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: JetBrains Mono
+    family: JetBrains Mono Nerd Font
     style: Bold Italic
 
   # Point size
-  size: 11.0
+  size: 10.0
 
   # Offset is the extra space around each character. `offset.y` can be thought of
   # as modifying the line spacing, and `offset.x` as modifying the letter spacing.
@@ -578,7 +580,7 @@ selection:
   #save_to_clipboard: false
 
 # Allow terminal applications to change Alacritty's window title.
-#dynamic_title: true
+dynamic_title: false
 
 cursor:
   # Cursor style
@@ -588,7 +590,7 @@ cursor:
   #   - _ Underline
   #   - | Beam
   style:
-    shape: Beam
+    shape: Block
       #vi_mode_style:
       #  shape: Beam
   # If this is `true`, the cursor will be rendered as a hollow box when the
@@ -596,7 +598,7 @@ cursor:
   unfocused_hollow: true
 
 # Live config reload (changes require restart)
-#live_config_reload: true
+live_config_reload: true
 
 # Shell
 #
@@ -667,7 +669,7 @@ shell:
   # If this is `true`, the cursor is temporarily hidden when typing.
   #hide_when_typing: false
 
-  url:
+  # url:
     # URL launcher
     #
     # This program is executed when clicking on a text which is recognized as a URL.
@@ -679,8 +681,8 @@ shell:
     #   - (macOS) open
     #   - (Linux/BSD) xdg-open
     #   - (Windows) explorer
-    launcher:
-      program: xdg-open
+    # launcher:
+      # program: xdg-open
     #  args: []
 
     # URL modifiers

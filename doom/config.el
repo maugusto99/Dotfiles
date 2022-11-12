@@ -1,7 +1,7 @@
 (setq user-full-name "Augusto Musetti"
       user-mail-address "musettiaugusto@gmail.com")
 
-(setq doom-theme 'doom-nord)
+(setq doom-theme 'doom-gruvbox)
 
 (setq org-directory "~/Documents/org/")
 (setq display-line-numbers-type t)
@@ -15,25 +15,15 @@
 (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
 
 ;; Fonts
-(setq doom-font (font-spec :family "Source Code Pro" :size 15 )
+(setq doom-font (font-spec :family "JetBrains Mono" :size 14 )
       doom-variable-pitch-font (font-spec :family "Inter" :size 14)
-      doom-big-font (font-spec :family "Source Code Pro" :size 24 ))
+      doom-big-font (font-spec :family "JetBrains Mono" :size 24 ))
 (after! doom-themes
   (setq doom-themes-enable-bold t
         doom-themes-enable-italic t))
 (custom-set-faces!
   '(font-lock-comment-face :slant italic)
   '(font-lock-keyword-face :slant italic))
-
-;; Set Dashboard to match the theme
-(setq fancy-splash-image "/home/augustom/.config/doom/doom-nord.png")
-(custom-set-faces!
-  '(doom-dashboard-banner :inherit)
-  '(doom-dashboard-footer :inherit font-lock-constant-face)
-  '(doom-dashboard-footer-icon :inherit all-the-icons-red)
-  '(doom-dashboard-loaded :inherit font-lock-warning-face)
-  '(doom-dashboard-menu-desc :inherit font-lock-string-face)
-  '(doom-dashboard-menu-title :inherit font-lock-function-name-face))
 
 ;; Page Scrolling
 (setq scroll-conservatively 101) ;; value greater than 100 gets rid of half page jumping
@@ -56,20 +46,9 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (map! :leader
-      :desc "Find files with fzf" "s z" 'counsel-fzf
-      ;; :desc "Find expresions with rg" "s g" 'counsel-rg
+      :desc "Find files with fd" "s z" '+vertico/consult-fd
+      :desc "Live ripgrep" "s g" 'consult-ripgrep
       )
-
-;; Ibuffer settings
-(evil-define-key 'normal ibuffer-mode-map
-  (kbd "f c") 'ibuffer-filter-by-content
-  (kbd "f d") 'ibuffer-filter-by-directory
-  (kbd "f f") 'ibuffer-filter-by-filename
-  (kbd "f m") 'ibuffer-filter-by-mode
-  (kbd "f n") 'ibuffer-filter-by-name
-  (kbd "f x") 'ibuffer-filter-disable
-  (kbd "g h") 'ibuffer-do-kill-lines
-  (kbd "g H") 'ibuffer-update)
 
 ;; Bookmarks
 (map! :leader
@@ -82,7 +61,9 @@
 (global-set-key (kbd "C--") 'text-scale-decrease)
 (global-set-key (kbd "<C-wheel-up>") 'text-scale-increase)
 (global-set-key (kbd "<C-wheel-down>") 'text-scale-decrease)
-(add-to-list 'initial-frame-alist '(fullscreen . maximized))
+;; (add-to-list 'initial-frame-alist '(fullscreen . maximized))
 
+(define-key evil-insert-state-map (kbd "C-c C-c") 'evil-normal-state)
+(define-key evil-normal-state-map (kbd "C-c C-c") 'evil-normal-state)
 
-(add-hook 'python-mode-hook 'anaconda-mode)
+(add-hook 'f90-mode-hook 'lsp-ensure-server)

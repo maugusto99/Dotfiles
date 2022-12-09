@@ -1,18 +1,7 @@
-local colors = require("gruvbox.palette")
 require("bufferline").setup({
 	options = {
-		mode = "tabs",
+		mode = "padded_slant",
 		separatorstyle = "slant",
-		color_icons = false,
+		-- color_icons = false,
 	},
-  highlights = {
-      fill = {
-          -- fg = '<colour-value-here>',
-          bg = colors.dark0,
-      },
-      background = {
-          -- fg = '<colour-value-here>',
-          -- bg = '<colour-value-here>'
-      },
-  }
 })

@@ -10,11 +10,11 @@ require("gruvbox").setup({
   invert_tabline = false,
   invert_intend_guides = false,
   inverse = true, -- invert background for search, diffs, statuslines and errors
-  contrast = "", -- can be "hard", "soft" or empty string
+  contrast = "hard", -- can be "hard", "soft" or empty string
   dim_inactive = false,
-  transparent_mode = false,
-  overrides = {
-      SignColumn = {bg = colors.dark0}
-  }
+  transparent_mode = true,
+  -- overrides = {
+  --     SignColumn = {bg = colors.dark0}
+  -- }
 })
 vim.cmd("colorscheme gruvbox")

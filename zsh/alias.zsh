@@ -5,9 +5,9 @@ alias vdiff="nvim -d"
 
 
 # ls
-alias ll='exa -alh --color=auto --group-directories-first' # my preferred listing
-alias la='exa -a --color=auto --group-directories-first'  # all files and dirs
-alias ls='exa --color=auto --group-directories-first'  # visible files
+alias ll='ls -alh --color=auto'
+alias la='ls -a --color=auto'
+alias ls='ls --color=auto '
 
 alias .1='cd ..'
 alias .2='cd ../..'

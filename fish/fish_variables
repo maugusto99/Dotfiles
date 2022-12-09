@@ -3,7 +3,7 @@
 SETUVAR --export BROWSER:firefox
 SETUVAR --export EDITOR:nvim
 SETUVAR --export LESSHISTFILE:\x2d
-SETUVAR --export TERMINAL:alacritty
+SETUVAR --export TERMINAL:konsole
 SETUVAR __fish_initialized:3400
 SETUVAR _fisher_decors_2F_fish_2D_colored_2D_man_files:\x7e/\x2econfig/fish/functions/man\x2efish
 SETUVAR _fisher_plugins:decors/fish\x2dcolored\x2dman
@@ -48,4 +48,4 @@ SETUVAR fish_pager_color_selected_background:\x2d\x2dbackground\x3dbrblack
 SETUVAR fish_pager_color_selected_completion:\x1d
 SETUVAR fish_pager_color_selected_description:\x1d
 SETUVAR fish_pager_color_selected_prefix:\x1d
-SETUVAR fish_user_paths:/home/augustom/\x2elocal/bin\x1e/storage/Applications/vaspkit\x2e1\x2e3\x2e5/bin\x1e/home/augustom/\x2econfig/emacs/bin
+SETUVAR fish_user_paths:/home/augustom/\x2elocal/bin\x1e/storage/Applications/vaspkit\x2e1\x2e3\x2e5/bin\x1e/home/augustom/\x2econfig/emacs/bin\x1e/home/augustom/\x2econfig/spicetify

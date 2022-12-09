@@ -37,9 +37,6 @@
 
 (setq global-prettify-symbols-mode t)
 
-(use-package octave-mode
-  :mode "\\.m\\'")
-
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Add personal keymaps
@@ -61,9 +58,9 @@
 (global-set-key (kbd "C--") 'text-scale-decrease)
 (global-set-key (kbd "<C-wheel-up>") 'text-scale-increase)
 (global-set-key (kbd "<C-wheel-down>") 'text-scale-decrease)
-;; (add-to-list 'initial-frame-alist '(fullscreen . maximized))
 
 (define-key evil-insert-state-map (kbd "C-c C-c") 'evil-normal-state)
 (define-key evil-normal-state-map (kbd "C-c C-c") 'evil-normal-state)
 
-(add-hook 'f90-mode-hook 'lsp-ensure-server)
+(setq display-line-numbers-type 'relative)
+(setq lsp-signature-render-documentation nil)

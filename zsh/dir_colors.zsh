@@ -8,7 +8,7 @@
 
 #COLOR tty
 
-TERM alacritty
+# TERM alacritty
 # TERM alacritty-direct
 # TERM ansi
 # TERM *color*
@@ -49,7 +49,7 @@ TERM alacritty
 # TERM xterm*
 # TERM xterm-color
 # TERM xterm-88color
-#TERM xterm-256color
+TERM xterm-256color
 # TERM xterm-kitty
 
 #+-----------------+

@@ -55,7 +55,7 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protoc
 require('mason').setup()
 
 -- Enable the following language servers
-local servers = { 'pyright', 'sumneko_lua', 'fortls' }
+local servers = { 'sumneko_lua', 'fortls', 'pylsp' }
 
 -- Ensure the servers above are installed
 require('mason-lspconfig').setup {
@@ -69,13 +69,22 @@ for _, lsp in ipairs(servers) do
   }
 end
 
+-- require'lspconfig'.fortls.setup{
+--     cmd = {
+--         'fortls',
+--         '--hover_signature',
+--         '--hover_language=fortran',
+--         '--use_signature_help',
+--   }
+-- }
+local util = require 'lspconfig.util'
 require'lspconfig'.fortls.setup{
     cmd = {
         'fortls',
         '--hover_signature',
         '--hover_language=fortran',
         '--use_signature_help',
-        '--max_line_lenght',
-        '--max_comment_line_lenght',
-  }
+        '--lowercase_intrinsics',
+    },
+   root_dir = util.root_pattern('*.f*')
 }

@@ -36,6 +36,14 @@ local options = {
 	termguicolors = true, -- set term gui colors (most terminals support this)
 }
 
+-- netrw options 
+vim.g.netrw_banner = 0
+vim.g.netrw_winsize = 30
+vim.g.netrw_keepdir = 0
+vim.g.netrw_localcopydircmd = "cp -r"
+vim.g.netrw_localrmdir = 'rm -r'
+
+
 for k, v in pairs(options) do
 	vim.opt[k] = v
 end
@@ -48,8 +56,11 @@ vim.opt.shortmess:append("c")
 vim.cmd("set whichwrap+=<,>,[,],h,l")
 vim.cmd([[set iskeyword+=-]])
 
--- netrw options (for display the banner press I)
-vim.g.netrw_banner = 0
-vim.g.netrw_winsize = 30
-vim.g.netrw_keepdir = 0
-vim.g.netrw_localcopydircmd = "cp -r"
+-- Neovim does not change cursor on the terminal
+-- vim.cmd
+-- [[
+--     augroup change_cursor
+--         au!
+--         au ExitPre * :set guicursor=a:ver90
+--     augroup END
+-- ]]

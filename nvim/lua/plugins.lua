@@ -8,6 +8,7 @@ return require("packer").startup(function(use)
 
   use { "ellisonleao/gruvbox.nvim" }
 
+
 	use({ -- Comment nvim
 		"numToStr/Comment.nvim",
 		config = function()
@@ -40,29 +41,6 @@ return require("packer").startup(function(use)
 
   use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
 
-  use {
-    'lewis6991/gitsigns.nvim',
-    config = function()
-      require('gitsigns').setup()
-    end
-  }
-
-  use {'norcalli/nvim-colorizer.lua',
-      require'colorizer'.setup()
-  }
-
-  use {
-    "folke/which-key.nvim",
-    config = function()
-      require("which-key").setup {
-        -- your configuration comes here
-        -- or leave it empty to use the default settings
-        -- refer to the configuration section below
-      }
-    end
-  }
-  use 'tpope/vim-fugitive'                                                             -- Git commands in nvim
-
   use 'lukas-reineke/indent-blankline.nvim'                                            -- Add indentation guides even on blank lines
 
   use 'neovim/nvim-lspconfig'                                                          -- Collection of configurations for built-in LSP client
@@ -71,6 +49,9 @@ return require("packer").startup(function(use)
   use { 'hrsh7th/nvim-cmp', requires = { 'hrsh7th/cmp-nvim-lsp' } }                    -- Autocompletion
   use { 'L3MON4D3/LuaSnip', requires = { 'saadparwaiz1/cmp_luasnip' } }                -- Snippet Engine and Snippet Expansion
 
-  use 'vifm/vifm.vim'
+  -- use {'norcalli/nvim-colorizer.lua',
+  --     require'colorizer'.setup()
+  -- }
+use({'NTBBloodbath/doom-one.nvim'})
 
 end)

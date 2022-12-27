@@ -10,7 +10,6 @@ env:
   # each instance of Alacritty. If it is not present, alacritty will
   # check the local terminfo database and use `alacritty` if it is
   # available, otherwise `xterm-256color` is used.
-  # TERM: alacritty
   TERM: alacritty
   # TERM: xterm-256color
 
@@ -19,9 +18,9 @@ window:
   #
   # Specified in number of columns/lines, not pixels.
   # If both are `0`, this setting is ignored.
-  #dimensions:
-  # columns: 10
-  # lines: 20
+  dimensions:
+   columns: 120
+   lines: 30
 
   # Window position (changes require restart)
   #
@@ -36,8 +35,8 @@ window:
   # Blank space added around the window in pixels. This padding is scaled
   # by DPI and the specified value is always added at both opposing sides.
   padding:
-    x: 2
-    y: 2
+    x: 5
+    y: 5
 
   # Spread additional padding evenly around the terminal content.
   #dynamic_padding: true
@@ -46,8 +45,7 @@ window:
   #
   # Window opacity as a floating point number from `0.0` to `1.0`.
   # The value `0.0` is completely transparent and `1.0` is opaque.
-  # opacity: 1.0
-  opacity: 0.94
+  opacity: 1.0
 
   # Window decorations
   #
@@ -55,21 +53,7 @@ window:
   #     - full: Borders and title bar
   #     - none: Neither borders nor title bar
   #
-  # Values for `decorations` (macOS only):
-  #     - transparent: Title bar, transparent background and title bar buttons
-  #     - buttonless: Title bar, transparent background, but no title bar buttons
   decorations: full
-
-  # Startup Mode (changes require restart)
-  #
-  # Values for `startup_mode`:
-  #   - Windowed
-  #   - Maximized
-  #   - Fullscreen
-  #
-  # Values for `startup_mode` (macOS only):
-  #   - SimpleFullscreen
-  #startup_mode: Windowed
 
   # Window title
   title: Alacritty
@@ -81,12 +65,6 @@ window:
     # General application class
     general: Alacritty
 
-  # GTK theme variant (Linux/BSD only)
-  #
-  # Override the variant of the GTK theme. Commonly supported values are `dark` and `light`.
-  # Set this to `None` to use the default theme variant.
-  #gtk_theme_variant: None
-
 scrolling:
   # Maximum number of lines in the scrollback buffer.
   # Specifying '0' will disable scrolling.
@@ -94,7 +72,7 @@ scrolling:
 
   # Number of lines the viewport will move for every line scrolled when
   # scrollback is enabled (history > 0).
-  multiplier: 2
+  multiplier: 3
 
   # Scroll to the bottom when new text is written to the terminal.
   auto_scroll: true
@@ -112,44 +90,26 @@ scrolling:
 font:
   # Normal (roman) font face
   normal:
-    # Font family
-    #
-    # Default:
-    #   - (macOS) Menlo
-    #   - (Linux/BSD) monospace
-    #   - (Windows) Consolas
     family: JetBrains Mono Nerd Font
     style: Regular
 
   # Bold font face
   bold:
-    # Font family
-    #
-    # If the bold family is not specified, it will fall back to the
-    # value specified for the normal font.
     family: JetBrains Mono Nerd Font
     style: Bold
 
   # Italic font face
   italic:
-    # Font family
-    #
-    # If the italic family is not specified, it will fall back to the
-    # value specified for the normal font.
     family: JetBrains Mono Nerd Font
     style: Italic
 
   # Bold italic font face
   bold_italic:
-    # Font family
-    #
-    # If the bold italic family is not specified, it will fall back to the
-    # value specified for the normal font.
     family: JetBrains Mono Nerd Font
     style: Bold Italic
 
   # Point size
-  size: 10.0
+  size: 9.0
 
   # Offset is the extra space around each character. `offset.y` can be thought of
   # as modifying the line spacing, and `offset.x` as modifying the letter spacing.
@@ -163,22 +123,6 @@ font:
   #glyph_offset:
   #  x: 0
   #  y: 0
-
-  # Thin stroke font rendering (macOS only)
-  #
-  # Thin strokes are suitable for retina displays, but for non-retina screens
-  # it is recommended to set `use_thin_strokes` to `false`
-  #
-  # macOS >= 10.14.x:
-  #
-  # If the font quality on non-retina display looks bad then set
-  # `use_thin_strokes` to `true` and enable font smoothing by running the
-  # following command:
-  #   `defaults write -g CGFontRenderingFontSmoothingDisabled -bool NO`
-  #
-  # This is a global setting and will require a log out or restart to take
-  # effect.
-  #use_thin_strokes: true
 
 # If `true`, bold text is drawn using the bright color variants.
 draw_bold_text_with_bright_colors: true
@@ -277,7 +221,8 @@ schemes:
     # Default colors
     primary:
       # hard contrast: background = '0x1d2021'
-      background: '#282828'
+      # background: '#282828'
+      background: '0x1d2021'
       # soft contrast: background = '0x32302f'
       foreground: '#ebdbb2'
 
@@ -526,6 +471,39 @@ schemes:
       cyan:    '#54ced6'
       white:   '#282a2e'
 
+  ### Tokyonight (Night) ###
+  Tokyonight: &Tokyonight
+  # Default colors
+    primary:
+      background: '0x1a1b26'
+      foreground: '0xc0caf5'
+
+      # Normal colors
+    normal:
+      black:   '0x15161e'
+      red:     '0xf7768e'
+      green:   '0x9ece6a'
+      yellow:  '0xe0af68'
+      blue:    '0x7aa2f7'
+      magenta: '0xbb9af7'
+      cyan:    '0x7dcfff'
+      white:   '0xa9b1d6'
+
+      # Bright colors
+    bright:
+      black:   '0x414868'
+      red:     '0xf7768e'
+      green:   '0x9ece6a'
+      yellow:  '0xe0af68'
+      blue:    '0x7aa2f7'
+      magenta: '0xbb9af7'
+      cyan:    '0x7dcfff'
+      white:   '0xc0caf5'
+
+    indexed_colors:
+      - { index: 16, color: '0xff9e64' }
+      - { index: 17, color: '0xdb4b4b' }
+
 ######################################################################
 ## SET THEME: Choose ONE color scheme from those in the above list. ##
 ## ###################################################################
@@ -533,6 +511,7 @@ schemes:
 # *DoomOne
 # *Dracula
 # *GruvboxDark
+# *GruvboxDarkHard
 # *MonokaiPro
 # *Nord
 # *OceanicNext
@@ -540,8 +519,9 @@ schemes:
 # *SolarizedLight
 # *SolarizedDark
 # *TomorrowNight
+# *Tokyonight
 
-colors: *GruvboxDark
+colors: *Tokyonight
 
 #######################################
 ##       END OF COLOR SCHEMES        ##
@@ -611,8 +591,8 @@ live_config_reload: true
 #   - (Windows) powershell
 shell:
   program: /bin/fish
-#  args:
-#    - --login
+  args:
+   - --login
 
 # Startup directory
 #
@@ -620,18 +600,7 @@ shell:
 # directory of the parent process will be used.
 #working_directory: None
 
-# WinPTY backend (Windows only)
-#
-# Alacritty defaults to using the newer ConPTY backend if it is available,
-# since it resolves a lot of bugs and is quite a bit faster. If it is not
-# available, the the WinPTY backend will be used instead.
-#
-# Setting this option to `true` makes Alacritty use the legacy WinPTY backend,
-# even if the ConPTY backend is available.
-#winpty_backend: false
 
-# Send ESC (\x1b) before characters when alt is pressed.
-#alt_send_esc: true
 
 #debug:
   # Display the time it takes to redraw each frame.
@@ -669,7 +638,7 @@ shell:
   # If this is `true`, the cursor is temporarily hidden when typing.
   #hide_when_typing: false
 
-  # url:
+  url:
     # URL launcher
     #
     # This program is executed when clicking on a text which is recognized as a URL.
@@ -681,8 +650,8 @@ shell:
     #   - (macOS) open
     #   - (Linux/BSD) xdg-open
     #   - (Windows) explorer
-    # launcher:
-      # program: xdg-open
+    launcher:
+      program: xdg-open
     #  args: []
 
     # URL modifiers

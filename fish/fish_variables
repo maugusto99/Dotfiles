@@ -3,10 +3,9 @@
 SETUVAR --export BROWSER:firefox
 SETUVAR --export EDITOR:nvim
 SETUVAR --export LESSHISTFILE:\x2d
-SETUVAR --export TERMINAL:konsole
+SETUVAR --export SKIM_DEFAULT_OPTIONS:\x20\x2d\x2dcolor\x3dbg\x2b\x3a\x233c3836\x2cbg\x3a\x231d2021\x2cspinner\x3a\x238ec07c\x2chl\x3a\x2383a598\x20\x2d\x2dcolor\x3dfg\x3a\x23bdae93\x2cheader\x3a\x2383a598\x2cinfo\x3a\x23fabd2f\x2cpointer\x3a\x238ec07c\x20\x2d\x2dcolor\x3dmarker\x3a\x238ec07c\x2cfg\x2b\x3a\x23ebdbb2\x2cprompt\x3a\x23fabd2f\x2chl\x2b\x3a\x2383a598
+SETUVAR --export TERMINAL:alacritty
 SETUVAR __fish_initialized:3400
-SETUVAR _fisher_decors_2F_fish_2D_colored_2D_man_files:\x7e/\x2econfig/fish/functions/man\x2efish
-SETUVAR _fisher_plugins:decors/fish\x2dcolored\x2dman
 SETUVAR _fisher_upgraded_to_4_4:\x1d
 SETUVAR fish_color_autosuggestion:585858
 SETUVAR fish_color_cancel:\x2d\x2dreverse
@@ -48,4 +47,5 @@ SETUVAR fish_pager_color_selected_background:\x2d\x2dbackground\x3dbrblack
 SETUVAR fish_pager_color_selected_completion:\x1d
 SETUVAR fish_pager_color_selected_description:\x1d
 SETUVAR fish_pager_color_selected_prefix:\x1d
-SETUVAR fish_user_paths:/home/augustom/\x2elocal/bin\x1e/storage/Applications/vaspkit\x2e1\x2e3\x2e5/bin\x1e/home/augustom/\x2econfig/emacs/bin\x1e/home/augustom/\x2econfig/spicetify
+SETUVAR fish_user_paths:/home/augustom/\x2elocal/bin\x1e/storage/Applications/vaspkit\x2e1\x2e3\x2e5/bin\x1e/home/augustom/\x2econfig/spicetify
+SETUVAR tide_left_prompt_items:context\x1econtext\x1econtext\x1econtext\x1econtext\x1econtext\x1econtext\x1econtext\x1econtext\x1econtext\x1econtext\x1econtext\x1econtext\x1econtext\x1econtext\x1econtext\x1econtext\x1econtext\x1econtext

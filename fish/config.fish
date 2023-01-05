@@ -22,6 +22,7 @@ function fish_user_key_bindings
     fish_default_key_bindings
 end
 
+
 #Aliases
 alias vi="nvim"
 
@@ -33,8 +34,6 @@ end
 
 if test -e /usr/bin/rg
   alias grep='rg -N'
-  alias egrep='erg -N'
-  alias fgrep='frg -N'
 end
 
 alias cp="cp -i"
@@ -66,7 +65,8 @@ set -x FZF_DEFAULT_OPTS '
 set fzf_fd_opts --hidden --exclude=.git
 set fzf_history_opts --with-nth=4..
 set fzf_dir_opts --bind "ctrl-o:execute($EDITOR {} &> /dev/tty)"
-# set fzf_directory_opts --preview ""
+set fzf_directory_opts --preview ""
+
 
 bind \ct 'tmux a || tmux'
 test -e /usr/bin/zoxide && zoxide init fish | source

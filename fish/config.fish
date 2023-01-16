@@ -38,7 +38,7 @@ alias mv='mv -i'
 alias rm='rm -i'
 alias bat='bat --theme base16'
 
-test -e /bin/bat && set -x MANPAGER "sh -c 'col -bx | bat -l man -p --theme base16'" && set -x MANROFFOPT "-c"
+test -e /bin/bat && set -x MANPAGER "sh -c 'col -bx | bat -l man -p '" && set -x MANROFFOPT "-c"
 alias ag="ase gui"
 alias wget="wget --hsts-file=$XDG_CACHE_HOME/wget-hsts"
 
@@ -46,7 +46,6 @@ alias wget="wget --hsts-file=$XDG_CACHE_HOME/wget-hsts"
 set -x FZF_DEFAULT_COMMAND 'fd --strip-cwd-prefix'
 set -x FZF_CTRL_T_COMMAND $FZF_DEFAULT_COMMAND '--hidden --type f --no-ignore-vcs'
 set -x FZF_ALT_C_COMMAND $FZF_DEFAULT_COMMAND '--hidden --type d --no-ignore-vcs'
-set -x FZF_CTRL_T_OPTS "--preview ''"
 
 set -x FZF_DEFAULT_OPTS '
 --height=70%
@@ -58,7 +57,7 @@ set -x FZF_DEFAULT_OPTS '
 --color=marker:#9ece6a,spinner:#9ece6a,header:#9ece6a'
 
 # set -x FZF_DEFAULT_OPTS '
-# --height=50%
+# --height=70%
 # --layout reverse
 # --bind ctrl-h:toggle-preview
 # --color=bg+:#3c3836,bg:#1d2021,spinner:#8ec07c,hl:#83a598
@@ -79,6 +78,8 @@ set fzf_dir_opts --bind "ctrl-o:execute($EDITOR {} &> /dev/tty)"
 # set fzf_directory_opts --preview ""
 
 bind \ct  'tmux a || tmux'
+bind \cf  'open .'
+
 source $XDG_CONFIG_HOME/fish/themes/Tokyonight.fish
 
 test -e /usr/bin/zoxide && zoxide init fish | source

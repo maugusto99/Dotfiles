@@ -48,22 +48,29 @@ set -x FZF_DEFAULT_COMMAND 'fd --strip-cwd-prefix'
 set -x FZF_CTRL_T_COMMAND $FZF_DEFAULT_COMMAND '--hidden --type f --no-ignore-vcs'
 set -x FZF_ALT_C_COMMAND $FZF_DEFAULT_COMMAND '--hidden --type d --no-ignore-vcs'
 
-set -x FZF_DEFAULT_OPTS '
---height=70%
---layout reverse
---bind ctrl-h:toggle-preview
---color=fg:#c0caf5,bg:#1a1b26,hl:#bb9af7
---color=fg+:#c0caf5,bg+:#1a1b26,hl+:#7dcfff
---color=info:#7aa2f7,prompt:#7dcfff,pointer:#7dcfff
---color=marker:#9ece6a,spinner:#9ece6a,header:#9ece6a'
+bind -e \ct fzf-file-widget
+bind -e \cr fzf-history-widget
+bind -e \ec fzf-cd-widget
+
+bind \e\cf fzf-file-widget
+bind \cr fzf-history-widget
+bind \e\cd fzf-cd-widget
 
 # set -x FZF_DEFAULT_OPTS '
 # --height=70%
 # --layout reverse
-# --bind ctrl-h:toggle-preview
-# --color=bg+:#3c3836,bg:#1d2021,spinner:#8ec07c,hl:#83a598
-# --color=fg:#bdae93,header:#83a598,info:#fabd2f,pointer:#8ec07c
-# --color=marker:#8ec07c,fg+:#ebdbb2,prompt:#fabd2f,hl+:#83a598'
+# --color=fg:#c0caf5,bg:#1a1b26,hl:#bb9af7
+# --color=fg+:#c0caf5,bg+:#1a1b26,hl+:#7dcfff
+# --color=info:#7aa2f7,prompt:#7dcfff,pointer:#7dcfff
+# --color=marker:#9ece6a,spinner:#9ece6a,header:#9ece6a'
+
+set -x FZF_DEFAULT_OPTS '
+--height=70%
+--layout reverse
+--bind ctrl-h:toggle-preview
+--color=bg+:#3c3836,bg:#1d2021,spinner:#8ec07c,hl:#83a598
+--color=fg:#bdae93,header:#83a598,info:#fabd2f,pointer:#8ec07c
+--color=marker:#8ec07c,fg+:#ebdbb2,prompt:#fabd2f,hl+:#83a598'
 
 # set -x FZF_DEFAULT_OPTS '
 # --height=70%

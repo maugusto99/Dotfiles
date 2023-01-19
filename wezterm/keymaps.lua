@@ -2,6 +2,8 @@ local wezterm = require 'wezterm'
 local act = wezterm.action
 
 return {
+  { key = '-', mods = 'ALT|CTRL', action = act.SplitVertical{ domain =  'CurrentPaneDomain' } },
+  { key = '|', mods = 'ALT|CTRL', action = act.SplitHorizontal{ domain =  'CurrentPaneDomain' } },
   { key = 'H', mods = 'SHIFT|CTRL', action = act.ActivatePaneDirection 'Left' },
   { key = 'H', mods = 'SHIFT|ALT|CTRL', action = act.AdjustPaneSize { 'Left', 1 } },
   { key = 'L', mods = 'SHIFT|CTRL', action = act.ActivatePaneDirection 'Right' },

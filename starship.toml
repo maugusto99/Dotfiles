@@ -1,5 +1,5 @@
 add_newline = false
-right_format = "$cmd_duration"
+# right_format = "$cmd_duration"
 
 [username]
 style_user = "green bold"
@@ -28,7 +28,7 @@ style = "bold italic blue"
 [cmd_duration]
 min_time = 4
 show_milliseconds = false
-disabled = false
+disabled = true
 style = "bold italic red"
 
 [aws]

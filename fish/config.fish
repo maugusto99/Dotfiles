@@ -3,6 +3,9 @@
 # your path gets massive and fish becomes very slow.
 
 set -e fish_user_paths
+set -x XDG_CONFIG_HOME $HOME/.config
+set -x XDG_CACHE_HOME $HOME/.cache
+set -x XDG_DATA_HOME $HOME/.local/share
 set -x fish_user_paths $HOME/.local/bin /storage/Applications/vaspkit.1.3.5/bin $XDG_CONFIG_HOME/spicetify $fish_user_paths
 
 
@@ -12,11 +15,11 @@ set -Ux EDITOR nvim
 set -Ux BROWSER firefox
 set -Ux TERMINAL alacritty
 set -Ux LESSHISTFILE -
-
-### SET EITHER DEFAULT EMACS MODE OR VI MODE ###
+set -Ux MANPAGER "nvim +Man!"
 
 function fish_user_key_bindings
   fish_default_key_bindings
+  fzf_key_bindings
 end
 
 
@@ -37,8 +40,6 @@ alias cp="cp -i"
 alias mv='mv -i'
 alias rm='rm -i'
 alias bat='bat --theme base16'
-
-test -e /bin/bat && set -x MANPAGER "sh -c 'col -bx | bat -l man -p '" && set -x MANROFFOPT "-c"
 alias ag="ase gui"
 alias wget="wget --hsts-file=$XDG_CACHE_HOME/wget-hsts"
 
@@ -72,15 +73,10 @@ set -x FZF_DEFAULT_OPTS '
 # --color pointer:#BF616A,info:#4C566A,spinner:#4C566A,header:#4C566A,prompt:#81A1C1,marker:#EBCB8B'
 
 # fzf.fish
-set fzf_fd_opts --hidden --exclude=.git
-set fzf_history_opts --with-nth=4..
-set fzf_dir_opts --bind "ctrl-o:execute($EDITOR {} &> /dev/tty)"
+# set fzf_fd_opts --hidden --exclude=.git --strip-cwd-prefix
+# set fzf_history_opts --with-nth=4..
+# set fzf_dir_opts --bind "ctrl-o:execute($EDITOR {} &> /dev/tty)"
 # set fzf_directory_opts --preview ""
-
-bind \ct  'tmux a || tmux'
-bind \cf  'open .'
-
-source $XDG_CONFIG_HOME/fish/themes/Tokyonight.fish
 
 test -e /usr/bin/zoxide && zoxide init fish | source
 

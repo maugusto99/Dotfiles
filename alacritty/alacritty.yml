@@ -21,7 +21,7 @@ env:
   # each instance of Alacritty. If it is not present, alacritty will
   # check the local terminfo database and use `alacritty` if it is
   # available, otherwise `xterm-256color` is used.
-  TERM: alacritty
+  TERM: xterm-256color
 
 window:
   # Window dimensions (changes require restart)
@@ -117,10 +117,10 @@ font:
     #   - (macOS) Menlo
     #   - (Linux/BSD) monospace
     #   - (Windows) Consolas
-    family: Hasklug Nerd Font
+    family: JetBrains Mono Nerd Font
 
     # The `style` can be specified to pick a specific face.
-    style: Medium
+    style: Regular
 
   # Bold font face
   #bold:
@@ -176,51 +176,85 @@ font:
   #
   # Thin strokes are suitable for retina displays, but for non-retina screens
   # it is recommended to set `use_thin_strokes` to `false`.
-  #use_thin_strokes: true
+  # use_thin_strokes: true
 
   # Use built-in font for box drawing characters.
   #
   # If `true`, Alacritty will use a custom built-in font for box drawing
   # characters (Unicode points 2500 - 259f).
   #
-  #builtin_box_drawing: true
+  builtin_box_drawing: true
 
+  draw_bold_text_with_bright_colors: true
 # If `true`, bold text is drawn using the bright color variants.
 #draw_bold_text_with_bright_colors: false
-
+schemes:
 # TokyoNight Alacritty Colors
-colors:
-  # Default colors
+  TokyoNight: &tokyonight
+    # Default colors
+    primary:
+      background: '0x1a1b26'
+      foreground: '0xc0caf5'
+
+      # Normal colors
+    normal:
+      black:   '0x15161e'
+      red:     '0xf7768e'
+      green:   '0x9ece6a'
+      yellow:  '0xe0af68'
+      blue:    '0x7aa2f7'
+      magenta: '0xbb9af7'
+      cyan:    '0x7dcfff'
+      white:   '0xa9b1d6'
+
+      # Bright colors
+    bright:
+      black:   '0x414868'
+      red:     '0xf7768e'
+      green:   '0x9ece6a'
+      yellow:  '0xe0af68'
+      blue:    '0x7aa2f7'
+      magenta: '0xbb9af7'
+      cyan:    '0x7dcfff'
+      white:   '0xc0caf5'
+
+  Kanagawa: &kanagawa
+    indexed_colors:
+      - { index: 16, color: '0xff9e64' }
+      - { index: 17, color: '0xdb4b4b' }
+
   primary:
-    background: '0x1a1b26'
-    foreground: '0xc0caf5'
+    background: '0x1f1f28'
+    foreground: '0xdcd7ba'
 
-  # Normal colors
   normal:
-    black:   '0x15161e'
-    red:     '0xf7768e'
-    green:   '0x9ece6a'
-    yellow:  '0xe0af68'
-    blue:    '0x7aa2f7'
-    magenta: '0xbb9af7'
-    cyan:    '0x7dcfff'
-    white:   '0xa9b1d6'
+    black:   '0x090618'
+    red:     '0xc34043'
+    green:   '0x76946a'
+    yellow:  '0xc0a36e'
+    blue:    '0x7e9cd8'
+    magenta: '0x957fb8'
+    cyan:    '0x6a9589'
+    white:   '0xc8c093'
 
-  # Bright colors
   bright:
-    black:   '0x414868'
-    red:     '0xf7768e'
-    green:   '0x9ece6a'
-    yellow:  '0xe0af68'
-    blue:    '0x7aa2f7'
-    magenta: '0xbb9af7'
-    cyan:    '0x7dcfff'
-    white:   '0xc0caf5'
+    black:   '0x727169'
+    red:     '0xe82424'
+    green:   '0x98bb6c'
+    yellow:  '0xe6c384'
+    blue:    '0x7fb4ca'
+    magenta: '0x938aa9'
+    cyan:    '0x7aa89f'
+    white:   '0xdcd7ba'
+
+  selection:
+    background: '0x2d4f67'
+    foreground: '0xc8c093'
 
   indexed_colors:
-    - { index: 16, color: '0xff9e64' }
-    - { index: 17, color: '0xdb4b4b' }
-
+    - { index: 16, color: '0xffa066' }
+    - { index: 17, color: '0xff5d62' }
+colors: *tokyonight
 
   # Cursor colors
   #
@@ -399,16 +433,16 @@ colors:
   # When set to `true`, selected text will be copied to the primary clipboard.
   #save_to_clipboard: false
 
-#cursor:
+cursor:
   # Cursor style
-  #style:
+  style:
     # Cursor shape
     #
     # Values for `shape`:
     #   - ▇ Block
     #   - _ Underline
     #   - | Beam
-    #shape: Block
+    shape: Block
 
     # Cursor blinking state
     #
@@ -417,7 +451,7 @@ colors:
     #   - Off: Disable blinking by default
     #   - On: Enable blinking by default
     #   - Always: Force the cursor to always blink
-    #blinking: Off
+    blinking: Off
 
   # Vi mode cursor style
   #
@@ -454,7 +488,9 @@ colors:
 shell:
  program: /bin/fish
  args:
-   - --login
+   - -l
+   - -c
+   - tmux a || tmux
 
 # Startup directory
 #
@@ -763,15 +799,16 @@ shell:
 #
 # If the same trigger is assigned to multiple actions, all of them are executed
 # in the order they were defined in.
-#key_bindings:
-  #- { key: Paste,                                       action: Paste          }
-  #- { key: Copy,                                        action: Copy           }
-  #- { key: L,         mods: Control,                    action: ClearLogNotice }
-  #- { key: L,         mods: Control, mode: ~Vi|~Search, chars: "\x0c"          }
-  #- { key: PageUp,    mods: Shift,   mode: ~Alt,        action: ScrollPageUp,  }
-  #- { key: PageDown,  mods: Shift,   mode: ~Alt,        action: ScrollPageDown }
-  #- { key: Home,      mods: Shift,   mode: ~Alt,        action: ScrollToTop,   }
-  #- { key: End,       mods: Shift,   mode: ~Alt,        action: ScrollToBottom }
+key_bindings:
+  # - { key: Paste,                                       action: Paste            }
+  # - { key: Copy,                                        action: Copy             }
+  # - { key: L,         mods: Control,                    action: ClearLogNotice   }
+  # - { key: L,         mods: Control, mode: ~Vi|~Search, chars: "\x0c"            }
+  # - { key: PageUp,    mods: Shift,   mode: ~Alt,        action: ScrollPageUp,    }
+  # - { key: PageDown,  mods: Shift,   mode: ~Alt,        action: ScrollPageDown   }
+  # - { key: Home,      mods: Shift,   mode: ~Alt,        action: ScrollToTop,     }
+  # - { key: End,       mods: Shift,   mode: ~Alt,        action: ScrollToBottom   }
+  - { key: Return,    mods: Alt,              action: ToggleFullscreen }
 
   # Vi Mode
   #- { key: Space,  mods: Shift|Control, mode: ~Search,    action: ToggleViMode            }

@@ -117,7 +117,7 @@ font:
     #   - (macOS) Menlo
     #   - (Linux/BSD) monospace
     #   - (Windows) Consolas
-    family: JetBrains Mono Nerd Font
+    family: Hack Nerd Font
 
     # The `style` can be specified to pick a specific face.
     style: Regular
@@ -183,7 +183,7 @@ font:
   # If `true`, Alacritty will use a custom built-in font for box drawing
   # characters (Unicode points 2500 - 259f).
   #
-  builtin_box_drawing: true
+  # builtin_box_drawing: true
 
   draw_bold_text_with_bright_colors: true
 # If `true`, bold text is drawn using the bright color variants.
@@ -287,7 +287,7 @@ schemes:
       magenta: '0xd3869b'
       cyan:    '0x8ec07c'
       white:   '0xfbf1c7'
-colors: *Gruvbox-Dark
+colors: *tokyonight
 
   # Cursor colors
   #

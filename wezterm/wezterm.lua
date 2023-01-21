@@ -5,7 +5,7 @@ return {
   -- fish shell on start
   default_prog = { '/usr/bin/fish', '-l' },
 
-  color_scheme = "Gruvbox dark, hard (base16)",
+  color_scheme = "tokyonight",
 
   font = wezterm.font 'JetBrains Mono Nerd Font',
   font_size = 9,

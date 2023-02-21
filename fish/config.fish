@@ -13,13 +13,14 @@ set -x fish_user_paths $HOME/.local/bin /storage/Applications/vaspkit.1.3.5/bin 
 set -Ux fish_greeting # Supresses fish's intro message
 set -Ux EDITOR nvim
 set -Ux BROWSER firefox
-set -Ux TERMINAL alacritty
+set -Ux TERMINAL kitty
 set -Ux LESSHISTFILE -
 set -Ux MANPAGER "nvim +Man!"
 
 
 #Aliases
-alias vi="nvim"
+abbr vi nvim
+abbr vimdiff nvim -d
 
 if test -e /usr/bin/exa
   alias ll='exa -alh --color=auto --group-directories-first'
@@ -34,14 +35,24 @@ end
 alias cp="cp -i"
 alias mv='mv -i'
 alias rm='rm -i'
-alias bat='bat --theme base16'
-alias ag="ase gui"
 alias wget="wget --hsts-file=$XDG_CACHE_HOME/wget-hsts"
+alias gdu="gdu --no-color"
+alias pkgsearch="apt-cache pkgnames --quiet | fzf | xargs nala show -v"
+test "$TERM" = "xterm-kitty" && alias ssh="kitty +kitten ssh"
 
 # EXPORTS
 set -x FZF_DEFAULT_COMMAND 'fd --strip-cwd-prefix --hidden '
 
 test -e $XDG_CONFIG_HOME/fish/themes/Tokyonight.fish && source $XDG_CONFIG_HOME/fish/themes/Tokyonight.fish
+
+# set -x FZF_DEFAULT_OPTS '
+# --height=70%
+# --layout reverse
+# --bind ctrl-h:toggle-preview
+# --color=bg+:#3c3836,bg:#1d2021,spinner:#8ec07c,hl:#83a598
+# --color=fg:#bdae93,header:#83a598,info:#fabd2f,pointer:#8ec07c
+# --color=marker:#8ec07c,fg+:#ebdbb2,prompt:#fabd2f,hl+:#83a598'
+
 
 test -e /usr/bin/zoxide && zoxide init fish | source
 

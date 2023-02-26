@@ -1,5 +1,5 @@
 local wezterm = require("wezterm")
-local keymaps = require("keymaps")
+local act = wezterm.action
 
 local function font(opts)
 	return wezterm.font_with_fallback({
@@ -9,10 +9,12 @@ local function font(opts)
 end
 
 return {
+
 	default_prog = { "/usr/bin/fish", "-l" },
-	color_scheme = "tokyonight",
-	font_size = 10,
+
+-- Font Config
 	font = font({ family = "Fira Code" }),
+	font_size = 11,
 	font_rules = {
 		{
 			italic = true,
@@ -41,10 +43,16 @@ return {
 			}),
 		},
 	},
+
+-- Misc
 	scrollback_lines = 1000000,
 	hide_tab_bar_if_only_one_tab = true,
 	force_reverse_video_cursor = true,
 	window_close_confirmation = "NeverPrompt",
+
+-- UI
+	color_scheme = "tokyonight",
+  cell_width = 0.9,
 	bold_brightens_ansi_colors = true,
 	initial_cols = 150,
 	initial_rows = 35,
@@ -87,5 +95,20 @@ return {
 			},
 		},
 	},
-	keys = keymaps,
+
+  -- Keymaps
+	keys = {
+
+		{ key = "-", mods = "ALT|CTRL", action = act.SplitVertical({ domain = "CurrentPaneDomain" }) },
+		{ key = "|", mods = "ALT|CTRL", action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
+		{ key = "H", mods = "SHIFT|CTRL", action = act.ActivatePaneDirection("Left") },
+		{ key = "H", mods = "SHIFT|ALT|CTRL", action = act.AdjustPaneSize({ "Left", 1 }) },
+		{ key = "L", mods = "SHIFT|CTRL", action = act.ActivatePaneDirection("Right") },
+		{ key = "L", mods = "SHIFT|ALT|CTRL", action = act.AdjustPaneSize({ "Right", 1 }) },
+		{ key = "K", mods = "SHIFT|CTRL", action = act.ActivatePaneDirection("Up") },
+		{ key = "K", mods = "SHIFT|ALT|CTRL", action = act.AdjustPaneSize({ "Up", 1 }) },
+		{ key = "J", mods = "SHIFT|CTRL", action = act.ActivatePaneDirection("Down") },
+		{ key = "J", mods = "SHIFT|ALT|CTRL", action = act.AdjustPaneSize({ "Down", 1 }) },
+
+	},
 }

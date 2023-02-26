@@ -40,10 +40,13 @@ alias gdu="gdu --no-color"
 alias pkgsearch="apt-cache pkgnames --quiet | fzf | xargs nala show -v"
 test "$TERM" = "xterm-kitty" && alias ssh="kitty +kitten ssh"
 
-# EXPORTS
-set -x FZF_DEFAULT_COMMAND 'fd --strip-cwd-prefix --hidden '
 
-test -e $XDG_CONFIG_HOME/fish/themes/Tokyonight.fish && source $XDG_CONFIG_HOME/fish/themes/Tokyonight.fish
+bind \e\cf '__fzf_files'
+bind \cr '__fzf_history'
+bind \e\cd '__fzf_directories'
+
+# EXPORTS
+set -x FZF_DEFAULT_COMMAND 'fd --strip-cwd-prefix '
 
 # set -x FZF_DEFAULT_OPTS '
 # --height=70%

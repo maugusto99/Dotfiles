@@ -1,34 +1,37 @@
 add_newline = false
-# right_format = "$cmd_duration"
+right_format = "$cmd_duration"
+
+[line_break]
+disabled = false
 
 [username]
 style_user = "green bold"
 style_root = "red bold"
-format = "[$user]($style) "
+format = "[$user]($style)[:](green bold) "
 disabled = false
 show_always = true
 
 [hostname]
-ssh_only = false
+ssh_only = true
 format = 'on [$hostname](bold purple) '
 trim_at = "."
 disabled = false
 
 [character]                            # The name of the module we are configuring is "character"
-success_symbol = "[➜](bold green)"     # The "success_symbol" segment is being set to "➜" with the color "bold green"
+success_symbol = "[](bold green)"     # The "success_symbol" segment is being set to "➜" with the color "bold green"
 error_symbol = "[✗](bold red)"
 
 [directory]
-read_only = " "
+read_only = " "
 truncation_length = 3
 fish_style_pwd_dir_length = 1
 truncate_to_repo = true # truncates directory to root folder if in github repo
-style = "bold italic blue"
+style = "bold italic purple"
 
 [cmd_duration]
 min_time = 4
 show_milliseconds = false
-disabled = true
+disabled = false
 style = "bold italic red"
 
 [aws]

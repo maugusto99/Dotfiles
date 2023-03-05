@@ -1,9 +1,11 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
 SETUVAR --export BROWSER:firefox
+SETUVAR --export DIFFPROG:nvim\x20\x2dd
 SETUVAR --export EDITOR:nvim
 SETUVAR --export LESSHISTFILE:\x2d
 SETUVAR --export MANPAGER:nvim\x20\x2bMan\x21
+SETUVAR --export PAGER:bat\x20\x2dn
 SETUVAR --export TERMINAL:kitty
 SETUVAR __fish_initialized:3400
 SETUVAR _fish_abbr_vi:nvim

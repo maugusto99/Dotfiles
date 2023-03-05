@@ -6,7 +6,7 @@ function __fzf_files -d "Search files with fzf and open with $EDITOR"
   else
     set clipboard "xclip -i"
   end
-  set -lx FZF_DEFAULT_COMMAND "fd --type f --strip-cwd-prefix --hidden --color never --exclude '.git*' --exclude '*icons' --exclude '*cache' "
+  set -lx FZF_DEFAULT_COMMAND "fd --type f --strip-cwd-prefix --hidden --color never --exclude '.git*' --exclude '*icons' --exclude '*cache' --exclude '*.var' --exclude '*.mozilla'"
   set -l files (fzf  --exact \
   --preview 'bat -n --color=always {}' --multi \
   --prompt='Search Files> ' \

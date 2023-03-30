@@ -6,7 +6,7 @@ set -e fish_user_paths
 set -x XDG_CONFIG_HOME $HOME/.config
 set -x XDG_CACHE_HOME $HOME/.cache
 set -x XDG_DATA_HOME $HOME/.local/share
-set -x fish_user_paths $HOME/.local/bin /storage/Applications/vaspkit.1.3.5/bin $fish_user_paths
+set -x fish_user_paths $HOME/.local/bin /storage/Applications/vaspkit.1.4.0/bin $fish_user_paths
 
 
 ### EXPORT ###
@@ -21,7 +21,6 @@ set -x DIFFPROG "nvim -d"
 
 #Aliases
 abbr vi nvim
-abbr htop btm --basic
 abbr vimdiff nvim -d
 
 if test -e /usr/bin/exa
@@ -31,7 +30,7 @@ if test -e /usr/bin/exa
 end
 
 if test -e /usr/bin/rg
-  alias grep='rg -N'
+  alias grep='rg'
 end
 
 alias cp="cp -i"
@@ -47,14 +46,6 @@ bind \e\cd '__fzf_directories'
 # EXPORTS
 set -x FZF_DEFAULT_COMMAND 'fd --strip-cwd-prefix '
 
-# set -x FZF_DEFAULT_OPTS '
-# --height=70%
-# --layout reverse
-# --bind ctrl-h:toggle-preview
-# --color=bg+:#3c3836,bg:#1d2021,spinner:#8ec07c,hl:#83a598
-# --color=fg:#bdae93,header:#83a598,info:#fabd2f,pointer:#8ec07c
-# --color=marker:#8ec07c,fg+:#ebdbb2,prompt:#fabd2f,hl+:#83a598'
 
 test -e /usr/bin/zoxide && zoxide init fish | source
 test -e /usr/bin/starship && starship init fish | source
-

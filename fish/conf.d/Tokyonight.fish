@@ -37,8 +37,8 @@ set -g fish_pager_color_selected_background --background=$selection
 set -x FZF_DEFAULT_OPTS '
 --height=90%
 --layout reverse
---pointer "󰁕"
---cycle --border --inline-info
+--pointer "➜"
+--cycle  --inline-info
 --color=fg:#c0caf5,bg:#1a1b26,hl:#bb9af7
 --color=fg+:#c0caf5,bg+:#1a1b26,hl+:#7dcfff
 --color=info:#7aa2f7,prompt:#7dcfff,pointer:#7dcfff

@@ -1,9 +1,9 @@
 lastupdatecheck: 0
 recentrepos:
-- /home/augustom/storage/nvim-awesome
-- /storage/nvim-awesome
+- /storage/some-stuff/neovim
 - /storage/Dotfiles-notebook
 - /home/augustom/storage/Dotfiles-notebook
+- /storage/nvim-awesome
 startuppopupversion: 5
 customcommandshistory: []
 hidecommandlog: false

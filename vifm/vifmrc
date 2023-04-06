@@ -56,7 +56,7 @@ set vimhelp
 set norunexec
 
 " List of color schemes to try (picks the first one supported by the terminal)
-colorscheme palenight Default-256
+colorscheme  palenight Default-256
 
 " Format for displaying time in file list. For example:
 " TIME_STAMP_FORMAT=%m/%d-%H:%M
@@ -132,7 +132,7 @@ command! zip zip -r %c.zip %f
 command! run !! ./%f
 command! make !!make %a
 command! mkcd :mkdir %a | cd %a
-command! vgrep vim "+grep %a"
+" command! vgrep nvim "+grep %a"
 command! reload :write | restart full
 
 " ------------------------------------------------------------------------------
@@ -171,7 +171,7 @@ command! reload :write | restart full
 " program.  There is also %FOREGROUND, which is useful for entering passwords.
 
 " Pdf
-filextype {*.pdf},<application/pdf> zathura %c %i &, apvlv %c, xpdf %c
+filextype {*.pdf},<application/pdf> evince %c %i &, apvlv %c, xpdf %c
 fileviewer {*.pdf},<application/pdf> pdftotext -nopgbrk %c -
 
 " PostScript
@@ -183,8 +183,8 @@ filextype {*.ps,*.eps,*.ps.gz},<application/postscript>
 
 " Djvu
 filextype {*.djvu},<image/vnd.djvu>
-        \ {View in zathura}
-        \ zathura %f,
+        \ {View in foliate}
+        \ foliate %f,
         \ {View in apvlv}
         \ apvlv %f,
 
@@ -358,6 +358,7 @@ filextype */
         \ {View in nautilus}
         \ nautilus %f &,
 
+
 " Syntax highlighting in preview
 "
 " Explicitly set highlight type for some extensions
@@ -514,15 +515,18 @@ endif
 " Various customization examples
 " ------------------------------------------------------------------------------
 
-command! FZFfind : set noquickview
-                \| let $FZF_PICK = term('fd | fzf --height 90 2>/dev/tty')
-                \| if $FZF_PICK != ''
-                \|     execute 'goto' fnameescape($FZF_PICK)
-                \| endif
-nnoremap <c-p> :FZFfind<cr>
-" Use ag (the silver searcher) instead of grep
+" command! FZFfind : set noquickview
+"                 \| let $FZF_PICK = term('fd --color never --hidden --strip-cwd-prefix | fzf --height 90 --border sharp 2>/dev/tty')
+"                 \| if $FZF_PICK != ''
+"                 \|     execute 'goto' fnameescape($FZF_PICK)
+"                 \| endif
+" nnoremap <c-p> :FZFfind<cr>
+
+" Use rg (ripgrep) instead of grep
 set grepprg='rg --vimgrep %i %a %s'
+" Use fd instead of find
 set findprg="fd --color never --hidden %p"
+
 " Add additional place to look for executables
 " let $PATH = $HOME.'/bin/fuse:'.$PATH
 

@@ -30,7 +30,7 @@ if test -e /usr/bin/exa
 end
 
 if test -e /usr/bin/rg
-  alias grep='rg'
+  alias gre='rg'
 end
 
 alias cp="cp -i"
@@ -38,6 +38,8 @@ alias mv='mv -i'
 alias rm='rm -i'
 alias wget="wget --hsts-file=$XDG_CACHE_HOME/wget-hsts"
 test "$TERM" = "xterm-kitty" && alias ssh="kitty +kitten ssh"
+# test -f $XDG_CONFIG_HOME/fish/themes/One-Dark.fish && source $XDG_CONFIG_HOME/fish/themes/One-Dark.fish
+test -f $XDG_CONFIG_HOME/fish/themes/Tokyonight.fish && source $XDG_CONFIG_HOME/fish/themes/Tokyonight.fish
 
 bind \e\cf '__fzf_files'
 bind \cr '__fzf_history'

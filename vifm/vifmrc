@@ -379,7 +379,7 @@ filextype */
 fileviewer *[^\/],.*[^\/]  bat --color always --wrap never --pager never %c -p
 fileviewer */,.*/ exa -T --icons --color always
 
-fileviewer *.png
+fileviewer *.png, *jpeg
     \ kitten icat --silent --transfer-mode=file --place=%pwx%ph@%pxx%py %c >/dev/tty </dev/tty %N
     \ %pc
     \ kitten icat --clear --silent >/dev/tty </dev/tty %N

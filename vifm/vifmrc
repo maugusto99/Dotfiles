@@ -56,7 +56,7 @@ set vimhelp
 set norunexec
 
 " List of color schemes to try (picks the first one supported by the terminal)
-colorscheme  palenight Default-256
+colorscheme  gruvbox palenight Default-256
 
 " Format for displaying time in file list. For example:
 " TIME_STAMP_FORMAT=%m/%d-%H:%M
@@ -376,13 +376,14 @@ filextype */
 " Displaying pictures in terminal
 " fileviewer *.jpg,*.png shellpic %c
 
-fileviewer *[^\/],.*[^\/]  bat --color always --wrap never --pager never %c -p
-fileviewer */,.*/ exa -T --icons --color always
-
-fileviewer *.png, *jpeg
+fileviewer *.png
     \ kitten icat --silent --transfer-mode=file --place=%pwx%ph@%pxx%py %c >/dev/tty </dev/tty %N
     \ %pc
     \ kitten icat --clear --silent >/dev/tty </dev/tty %N
+
+fileviewer *[^\/],.*[^\/]  bat --color always --wrap never --pager never %c -p
+fileviewer */,.*/ lsd --tree --icon always --color always
+
 
 " Open all other files with default system programs (you can also remove all
 " :file[x]type commands above to ensure they don't interfere with system-wide

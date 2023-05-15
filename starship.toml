@@ -5,7 +5,7 @@ right_format = "$cmd_duration"
 disabled = false
 
 [username]
-style_user = "cyan bold"
+style_user = "blue bold"
 style_root = "red bold"
 format = "[$user]($style) "
 disabled = false
@@ -18,7 +18,7 @@ trim_at = "."
 disabled = false
 
 [character]                            # The name of the module we are configuring is "character"
-success_symbol = "[](bold purple)"     # The "success_symbol" segment is being set to "➜" with the color "bold green"
+success_symbol = "[](bold green)"     # The "success_symbol" segment is being set to "➜" with the color "bold green"
 error_symbol = "[✗](bold red)"
 
 [directory]
@@ -26,7 +26,7 @@ read_only = " "
 truncation_length = 3
 fish_style_pwd_dir_length = 1
 truncate_to_repo = true # truncates directory to root folder if in github repo
-style = "bold italic purple"
+style = "bold italic cyan"
 
 [cmd_duration]
 min_time = 4

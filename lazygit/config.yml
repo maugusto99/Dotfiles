@@ -44,8 +44,8 @@ gui:
 git:
   paging:
     colorArg: always
-    pager: delta --paging=never --syntax-theme tokyonight_night
-    # pager: delta --paging=never --syntax-theme gruvbox-dark
+    # pager: delta --paging=never --syntax-theme tokyonight_night
+    pager: delta --paging=never --syntax-theme gruvbox-dark
     useConfig: false
   commit:
     signOff: false
@@ -222,10 +222,6 @@ keybinding:
     init: i
     update: u
     bulkMenu: b
-os:
-  editCommand: "nvim"
-  openCommand: open {{filename}}
-  openLinkCommand: open {{link}}
 disableStartupPopups: false
 customCommands:
   - key: "b"

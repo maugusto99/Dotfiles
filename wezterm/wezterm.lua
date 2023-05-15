@@ -12,36 +12,36 @@ local opts = {}
 
 opts.default_prog = { "/usr/bin/fish", "-l" }
 -- Font Config
-opts.font = font({ family = "Fira Code" })
+opts.font = font({ family = "JetBrains Mono" })
 opts.font_size = 12
-opts.font_rules = {
-	{
-		italic = true,
-		intensity = "Normal",
-		font = font({
-			family = "Victor Mono",
-			style = "Italic",
-		}),
-	},
-	{
-		italic = true,
-		intensity = "Half",
-		font = font({
-			family = "Victor Mono",
-			weight = "DemiBold",
-			style = "Italic",
-		}),
-	},
-	{
-		italic = true,
-		intensity = "Bold",
-		font = font({
-			family = "Victor Mono",
-			weight = "Bold",
-			style = "Italic",
-		}),
-	},
-}
+-- opts.font_rules = {
+-- 	{
+-- 		italic = true,
+-- 		intensity = "Normal",
+-- 		font = font({
+-- 			family = "Victor Mono",
+-- 			style = "Italic",
+-- 		}),
+-- 	},
+-- 	{
+-- 		italic = true,
+-- 		intensity = "Half",
+-- 		font = font({
+-- 			family = "Victor Mono",
+-- 			weight = "DemiBold",
+-- 			style = "Italic",
+-- 		}),
+-- 	},
+-- 	{
+-- 		italic = true,
+-- 		intensity = "Bold",
+-- 		font = font({
+-- 			family = "Victor Mono",
+-- 			weight = "Bold",
+-- 			style = "Italic",
+-- 		}),
+-- 	},
+-- }
 -- Misc
 opts.scrollback_lines = 10000
 opts.hide_tab_bar_if_only_one_tab = true
@@ -55,7 +55,7 @@ opts.initial_rows = 30
 opts.use_fancy_tab_bar = true
 opts.window_frame = {
 	font_size = 12.0,
-	font = font({ family = "Fira Code", weight = "Bold" }),
+	font = font({ family = "JetBrains Mono", weight = "Bold" }),
 	active_titlebar_bg = "#191b26",
 	inactive_titlebar_bg = "#1e2030",
 }

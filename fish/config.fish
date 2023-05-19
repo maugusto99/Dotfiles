@@ -24,7 +24,7 @@ test -f $XDG_CONFIG_HOME/fish/themes/Gruvbox.fish && source $XDG_CONFIG_HOME/fis
 
 bind \e\cf '__fzf_files'
 bind \cr '__fzf_history'
-bind \ct '__init_tmux'
+# bind \ct '__init_tmux'
 bind \e\cd '__fzf_directories'
 
 

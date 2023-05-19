@@ -1,9 +1,9 @@
 lastupdatecheck: 0
 recentrepos:
-- /storage/nvim-awesome
 - /storage/Dotfiles-notebook
-- /home/augustom/storage/Dotfiles-notebook
+- /storage/nvim-awesome
 - /home/augustom/storage/nvim-awesome
+- /home/augustom/storage/Dotfiles-notebook
 startuppopupversion: 5
 customcommandshistory:
 - ls

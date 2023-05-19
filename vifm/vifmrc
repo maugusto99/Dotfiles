@@ -382,7 +382,7 @@ fileviewer *.png
     \ kitten icat --clear --silent >/dev/tty </dev/tty %N
 
 fileviewer *[^\/],.*[^\/]  bat --color always --wrap never --pager never %c -p
-fileviewer */,.*/ lsd --tree --icon always --color always
+fileviewer */,.*/ exa -T --icons --color always
 
 
 " Open all other files with default system programs (you can also remove all

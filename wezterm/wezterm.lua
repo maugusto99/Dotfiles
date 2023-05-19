@@ -14,83 +14,28 @@ opts.default_prog = { "/usr/bin/fish", "-l" }
 -- Font Config
 opts.font = font({ family = "JetBrains Mono" })
 opts.font_size = 12
--- opts.font_rules = {
--- 	{
--- 		italic = true,
--- 		intensity = "Normal",
--- 		font = font({
--- 			family = "Victor Mono",
--- 			style = "Italic",
--- 		}),
--- 	},
--- 	{
--- 		italic = true,
--- 		intensity = "Half",
--- 		font = font({
--- 			family = "Victor Mono",
--- 			weight = "DemiBold",
--- 			style = "Italic",
--- 		}),
--- 	},
--- 	{
--- 		italic = true,
--- 		intensity = "Bold",
--- 		font = font({
--- 			family = "Victor Mono",
--- 			weight = "Bold",
--- 			style = "Italic",
--- 		}),
--- 	},
--- }
 -- Misc
 opts.scrollback_lines = 10000
 opts.hide_tab_bar_if_only_one_tab = true
 opts.force_reverse_video_cursor = true
 opts.window_close_confirmation = "NeverPrompt"
 opts.window_decorations = "RESIZE"
-opts.color_scheme = "tokyonight"
+opts.color_scheme = "Gruvbox dark, hard (base16)"
 opts.bold_brightens_ansi_colors = true
 opts.initial_cols = 130
 opts.initial_rows = 30
 opts.use_fancy_tab_bar = true
 opts.window_frame = {
-	font_size = 12.0,
+	font_size = 11.0,
 	font = font({ family = "JetBrains Mono", weight = "Bold" }),
-	active_titlebar_bg = "#191b26",
-	inactive_titlebar_bg = "#1e2030",
+	-- active_titlebar_bg = "#191b26",
+	-- inactive_titlebar_bg = "#1e2030",
 }
 opts.window_padding = {
 	left = 5,
 	right = 5,
 	top = 5,
 	bottom = 5,
-}
-opts.colors = {
-	tab_bar = {
-		-- The color of the inactive tab bar edge/divider
-		inactive_tab_edge = "#1a1b26",
-		background = "#1a1b26",
-		active_tab = {
-			fg_color = "#c0caf5",
-			bg_color = "#222436",
-		},
-		inactive_tab = {
-			bg_color = "#1a1b26",
-			fg_color = "#414868",
-		},
-		inactive_tab_hover = {
-			bg_color = "#1a1b26",
-			fg_color = "#a9b1d6",
-		},
-		new_tab_hover = {
-			fg_color = "#1a1b26",
-			bg_color = "#82aaff",
-		},
-		new_tab = {
-			fg_color = "#c0caf5",
-			bg_color = "#1a1b26",
-		},
-	},
 }
 -- Keymaps
 opts.keys = {

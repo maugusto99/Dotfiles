@@ -5,7 +5,7 @@ function __fzf_directories -d "Search Directories with fzf"
   set -l directories (fzf  --exact --bind 'ctrl-y:execute-silent(echo -n {1..} | $clipboard)+abort' \
   --prompt='Search Directories> ' \
   --info=hidden \
-  --preview 'lsd --tree --color always --icon always {}' \
+  --preview 'exa -T --color=always --icons {}' \
   --color header:italic --header 'Press CTRL-Y to copy path into clipboard')
   if test -n "$directories"
     echo {cd $directories} | read -l result

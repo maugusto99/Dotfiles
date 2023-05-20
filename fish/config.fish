@@ -19,8 +19,8 @@ set -Ux FZF_DEFAULT_COMMAND 'fd --strip-cwd-prefix '
 abbr vi nvim
 abbr vimdiff nvim -d
 
-# test -f $XDG_CONFIG_HOME/fish/themes/Tokyonight.fish && source $XDG_CONFIG_HOME/fish/themes/Tokyonight.fish
-test -f $XDG_CONFIG_HOME/fish/themes/Gruvbox.fish && source $XDG_CONFIG_HOME/fish/themes/Gruvbox.fish
+test -f $XDG_CONFIG_HOME/fish/themes/Tokyonight.fish && source $XDG_CONFIG_HOME/fish/themes/Tokyonight.fish
+# test -f $XDG_CONFIG_HOME/fish/themes/Gruvbox.fish && source $XDG_CONFIG_HOME/fish/themes/Gruvbox.fish
 
 bind \e\cf '__fzf_files'
 bind \cr '__fzf_history'

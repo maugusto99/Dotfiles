@@ -20,6 +20,12 @@ set -l color0E '#c678dd'
 set -l color0F '#be5046'
 
 set -l FZF_NON_COLOR_OPTS
+set -l FZF_DEFAULT_OPTS '
+--height=90%
+--layout reverse
+--pointer "➜"
+--cycle  --inline-info
+'
 
 for arg in (echo $FZF_DEFAULT_OPTS | tr " " "\n")
     if not string match -q -- "--color*" $arg

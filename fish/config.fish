@@ -3,7 +3,6 @@ set -Ux fish_user_paths
 fish_add_path ~/.local/bin
 fish_add_path /bin
 fish_add_path /var/lib/flatpak/exports/bin/
-fish_add_path /storage/Applications/vaspkit.1.4.0/bin
 
 ### EXPORT ###
 set -Ux fish_greeting # Supresses fish's intro message
@@ -19,8 +18,7 @@ set -Ux FZF_DEFAULT_COMMAND 'fd --strip-cwd-prefix '
 abbr vi nvim
 abbr vimdiff nvim -d
 
-test -f $XDG_CONFIG_HOME/fish/themes/Tokyonight.fish && source $XDG_CONFIG_HOME/fish/themes/Tokyonight.fish
-# test -f $XDG_CONFIG_HOME/fish/themes/Gruvbox.fish && source $XDG_CONFIG_HOME/fish/themes/Gruvbox.fish
+test -f ~/.config/fish/themes/Tokyonight.fish && source ~/.config/fish/themes/Tokyonight.fish
 
 bind \e\cf '__fzf_files'
 bind \cr '__fzf_history'

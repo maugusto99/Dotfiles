@@ -1,4 +1,4 @@
-function grep --wraps=rg --description 'alias gre=rg'
-  rg $argv
+function grep --wraps=rg --description 'alias grep=rg'
+  rg -N $argv
 
 end

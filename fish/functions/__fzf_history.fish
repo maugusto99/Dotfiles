@@ -12,6 +12,7 @@ function __fzf_history -d "Search through fish history"
   --preview-window down:4:wrap \
   --prompt='Search History> ' \
   --info=hidden\
+  --multi \
   --bind 'alt-p:toggle-preview' \
   --bind 'ctrl-y:execute-silent(echo -n {1..} | $clipboard)+abort' \
   --color header:italic \

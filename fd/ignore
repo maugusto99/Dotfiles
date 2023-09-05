@@ -1,0 +1,5 @@
+.mozilla
+.local/share/icons
+.cache
+.vscode
+.var

@@ -9,8 +9,6 @@ set -gx FZF_DEFAULT_COMMAND 'fd --strip-cwd-prefix '
 set -gx fish_user_paths
 # Path
 fish_add_path ~/.local/bin
-fish_add_path /bin
-fish_add_path /var/lib/flatpak/exports/bin/
 
 ### EXPORT ###
 
@@ -18,14 +16,12 @@ fish_add_path /var/lib/flatpak/exports/bin/
 abbr vi nvim
 abbr vimdiff nvim -d
 
-test -f ~/.config/fish/themes/Gruvbox.fish && source ~/.config/fish/themes/Gruvbox.fish
-# test -f ~/.config/fish/themes/Tokyonight.fish && source ~/.config/fish/themes/Tokyonight.fish
+# test -f ~/.config/fish/themes/Dracula.fish && source ~/.config/fish/themes/Dracula.fish
+test -f ~/.config/fish/themes/Tokyonight.fish && source ~/.config/fish/themes/Tokyonight.fish
 
 bind \e\cf '__fzf_files'
 bind \cr '__fzf_history'
-# bind \ct '__init_tmux'
 bind \e\cd '__fzf_directories'
 
-
 test -e /usr/bin/zoxide && zoxide init fish | source
-# test -e /usr/bin/starship && starship init fish | source
+test -e /usr/local/bin/starship && starship init fish | source

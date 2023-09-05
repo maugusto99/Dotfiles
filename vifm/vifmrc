@@ -56,7 +56,7 @@ set vimhelp
 set norunexec
 
 " List of color schemes to try (picks the first one supported by the terminal)
-colorscheme gruvbox palenight
+colorscheme palenight dracula gruvbox
 
 " Format for displaying time in file list. For example:
 " TIME_STAMP_FORMAT=%m/%d-%H:%M
@@ -103,8 +103,7 @@ set statusline="  Hint: %z%= %A %10u:%-7g %15s %20d  "
 
 mark c ~/.config/
 mark n ~/.config/nvim
-mark a /storage/nvim-awesome/
-mark d /storage/Dotfiles-notebook/
+mark d /storage/dotfiles-notebook
 
 " ------------------------------------------------------------------------------
 " Commands
@@ -171,7 +170,7 @@ command! reload :write | restart full
 " program.  There is also %FOREGROUND, which is useful for entering passwords.
 
 " Pdf
-filextype {*.pdf},<application/pdf> evince %c %i &, apvlv %c, xpdf %c
+filextype {*.pdf},<application/pdf> okular %c %i &, apvlv %c, xpdf %c
 fileviewer {*.pdf},<application/pdf> pdftotext -nopgbrk %c -
 
 " PostScript
@@ -238,7 +237,7 @@ fileviewer {*.[1-8]},<text/troff> man ./%c | col -b
 " Images
 filextype {*.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm},<image/*>
         \ {View in sxiv}
-        \ eog %f,
+        \ gwenview %f,
         \ {View in gpicview}
         \ gpicview %c,
         \ {View in shotwell}
@@ -376,16 +375,13 @@ filextype */
 " Displaying pictures in terminal
 " fileviewer *.jpg,*.png shellpic %c
 
-"fileviewer *.png
-"    \ kitten icat --silent --transfer-mode=file --place=%pwx%ph@%pxx%py %c >/dev/tty </dev/tty %N
-"    \ %pc
-"    \ kitten icat --clear --silent >/dev/tty </dev/tty %N
-
-"fileviewer {*.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm},<image/*>
-"    \ wezterm imgcat  %c:p %pd
+fileviewer *.png
+    \ kitten icat --silent --transfer-mode=file --place=%pwx%ph@%pxx%py %c >/dev/tty </dev/tty %N
+    \ %pc
+    \ kitten icat --clear --silent >/dev/tty </dev/tty %N
 
 fileviewer *[^\/],.*[^\/]  bat --color always --wrap never --pager never %c -p
-fileviewer */,.*/ exa -T --icons --color always
+fileviewer */,.*/ lsd --tree --icon always --color always --hyperlink=never
 
 
 " Open all other files with default system programs (you can also remove all
@@ -509,9 +505,9 @@ endif
 
 " Midnight commander alike mappings
 " Open current directory in the other pane
-" nnoremap <a-i> :sync<cr>
+nnoremap <a-i> :sync<cr>
 " Open directory under cursor in the other pane
-" nnoremap <a-o> :sync %c<cr>
+nnoremap <a-o> :sync %c<cr>
 " Swap panes
 " nnoremap <c-u> <c-w>x
 
@@ -529,7 +525,7 @@ endif
 " Use rg (ripgrep) instead of grep
 set grepprg='rg --vimgrep %i %a %s'
 " Use fd instead of find
-set findprg="fd --color never --hidden %p"
+set findprg="fd --color never --hidden  %p"
 
 " Add additional place to look for executables
 " let $PATH = $HOME.'/bin/fuse:'.$PATH

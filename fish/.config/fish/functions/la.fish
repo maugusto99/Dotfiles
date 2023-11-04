@@ -1,4 +1,4 @@
-function la --wraps="exa -a --icons --group-directories-first" --description "alias la=exa -a --icons --group-directories-first"
-  lsd -a $argv
-
+function la --wraps='eza -A --icons=always --group-directories-first' --description 'alias la=eza -A --icons=always --group-directories-first'
+  eza -A --icons=always --group-directories-first $argv
+        
 end

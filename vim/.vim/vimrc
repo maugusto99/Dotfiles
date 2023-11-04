@@ -25,15 +25,19 @@ set showmatch
 set hlsearch
 set ignorecase
 set smartcase
-
-
 set autoread " autoread files
 set mouse=a " use mouse for scroll or window size
 set hidden                      " Needed to keep multiple buffers open
-set noswapfile                  
+
+if has('persistent_undo')         "check if your vim version supports
+  set undodir=$HOME/.vim/undo     "directory where the undo files will be stored
+  set undofile                    "turn on the feature
+endif
+
+set noswapfile
 set viminfo='10,<100,:100,%,n~/.vim/.viminfo
-set undofile
 set t_Co=256                    " Set if term supports 256 colors.
 set wildmenu
 set cursorline
 syntax enable
+nnoremap <C-l> :nohl<cr>

@@ -375,10 +375,8 @@ filextype */
 " Displaying pictures in terminal
 " fileviewer *.jpg,*.png shellpic %c
 
-fileviewer *.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm
-    \ kitten icat --silent --transfer-mode=file --place=%pwx%ph@%pxx%py %c >/dev/tty </dev/tty %N
-    \ %pc
-    \ kitten icat --clear --silent >/dev/tty </dev/tty %N
+fileviewer {*.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm},<image/*>
+       \ wezterm imgcat --width %pw --height %ph %c:p %pd
 
 fileviewer *[^\/],.*[^\/]  bat --color always --wrap never --pager never %c -p
 fileviewer */,.*/ lsd --tree --icon always --color always --hyperlink=never

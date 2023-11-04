@@ -27,11 +27,12 @@ set -l fish_pager_color_progress 6c7086
 set -l fish_pager_color_prefix f5c2e7
 set -l fish_pager_color_completion cdd6f4
 set -l fish_pager_color_description 6c7086
+
 set -Ux FZF_DEFAULT_OPTS "\
 --height=90%
 --layout reverse
 --pointer "➜"
 --cycle  --inline-info
---color=bg+:#1e1e2e,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8 \
+--color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8 \
 --color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
 --color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8"

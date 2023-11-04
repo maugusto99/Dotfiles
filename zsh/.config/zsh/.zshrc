@@ -3,7 +3,7 @@ autoload -U colors && colors
 
 PROMPT="%B%F{red}[%f%b%B%F{green}%n%f%b%B%F{yellow}@%f%b%B%F{cyan}%2~%f%b%B%F{red}]%f%b "
 
-# options 
+# options
 setopt autocd menu_complete
 setopt alwaystoend
 setopt appendhistory

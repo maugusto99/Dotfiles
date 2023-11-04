@@ -1,120 +1,109 @@
 local wezterm = require("wezterm")
 local act = wezterm.action
 
-local function font(opts)
-	return wezterm.font_with_fallback({
-		opts,
-		"Symbols Nerd Font Mono",
-	})
-end
-
 local config = {}
 
-config.default_prog = { "/usr/bin/fish", "-l" }
--- Font Config
-config.font = font({ family = "JetBrains Mono" })
-config.font_size = 11
--- Misc
+config.default_prog = { "/usr/bin/fish" }
+config.front_end = "WebGpu"
+config.adjust_window_size_when_changing_font_size = false
+config.webgpu_power_preference = "HighPerformance"
 config.scrollback_lines = 100000
 config.hide_tab_bar_if_only_one_tab = true
 config.force_reverse_video_cursor = true
 config.window_close_confirmation = "NeverPrompt"
-config.color_scheme = "Gruvbox dark, hard (base16)"
+config.color_scheme = "Catppuccin Mocha"
 config.bold_brightens_ansi_colors = true
-config.initial_cols = 120
+config.initial_cols = 140
 config.initial_rows = 30
-config.use_fancy_tab_bar = true
+
+config.font = wezterm.font({
+	family = "JetBrains Mono",
+})
+config.font_size = 10.0
+config.allow_square_glyphs_to_overflow_width = "Always"
+
 config.window_frame = {
-	font_size = 10.0,
-	font = font({ family = "JetBrains Mono", weight = "Bold" }),
-	-- active_titlebar_bg = "#191b26",
-	-- inactive_titlebar_bg = "#1e2030",
+	font_size = 9.0,
+	font = wezterm.font({ family = "Roboto", weight = "Medium" }),
 }
+
 config.window_padding = {
 	left = 1,
 	right = 1,
 	top = 1,
 	bottom = 1,
 }
--- config.colors = {
--- 	tab_bar = {
--- 		-- The color of the inactive tab bar edge/divider
--- 		inactive_tab_edge = "#1a1b26",
--- 		background = "#1a1b26",
--- 		active_tab = {
--- 			fg_color = "#c0caf5",
--- 			bg_color = "#222436",
--- 		},
--- 		inactive_tab = {
--- 			bg_color = "#1a1b26",
--- 			fg_color = "#414868",
--- 		},
--- 		inactive_tab_hover = {
--- 			bg_color = "#1a1b26",
--- 			fg_color = "#a9b1d6",
--- 		},
--- 		new_tab_hover = {
--- 			fg_color = "#1a1b26",
--- 			bg_color = "#82aaff",
--- 		},
--- 		new_tab = {
--- 			fg_color = "#c0caf5",
--- 			bg_color = "#1a1b26",
--- 		},
--- 	},
--- }
--- Keymaps
+-- Keys
+config.leader = { key = "phys:Space", mods = "CTRL", timeout_milliseconds = 1000 }
 config.keys = {
-	-- { key = "T", mods = "ALT|SHIFT", action = "ShowTabNavigator" },
-	{ key = "-", mods = "ALT|CTRL", action = act.SplitVertical({ domain = "CurrentPaneDomain" }) },
-	{ key = "|", mods = "ALT|CTRL", action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
-	{ key = "H", mods = "SHIFT|CTRL", action = act.ActivatePaneDirection("Left") },
-	{ key = "H", mods = "SHIFT|ALT|CTRL", action = act.AdjustPaneSize({ "Left", 1 }) },
-	{ key = "L", mods = "SHIFT|CTRL", action = act.ActivatePaneDirection("Right") },
-	{ key = "L", mods = "SHIFT|ALT|CTRL", action = act.AdjustPaneSize({ "Right", 1 }) },
-	{ key = "K", mods = "SHIFT|CTRL", action = act.ActivatePaneDirection("Up") },
-	{ key = "K", mods = "SHIFT|ALT|CTRL", action = act.AdjustPaneSize({ "Up", 1 }) },
-	{ key = "J", mods = "SHIFT|CTRL", action = act.ActivatePaneDirection("Down") },
-	{ key = "J", mods = "SHIFT|ALT|CTRL", action = act.AdjustPaneSize({ "Down", 1 }) },
-	{ key = "UpArrow", mods = "SHIFT", action = act.ScrollByLine(-1) },
-	{ key = "DownArrow", mods = "SHIFT", action = act.ScrollByLine(1) },
+	{ key = "n", mods = "SHIFT|CTRL", action = act.SendKey({ key = "n", mods = "SHIFT|CTRL" }) },
+	{ key = "c", mods = "LEADER", action = act.ActivateCopyMode },
+	{ key = "p", mods = "LEADER", action = act.ActivateCommandPalette },
+
+	-- Pane keybindings
+	{ key = "s", mods = "LEADER", action = act.SplitVertical({ domain = "CurrentPaneDomain" }) },
+	{ key = "v", mods = "LEADER", action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
+
+	-- SHIFT is for when caps lock is on
+	{ key = "h", mods = "LEADER", action = act.ActivatePaneDirection("Left") },
+	{ key = "j", mods = "LEADER", action = act.ActivatePaneDirection("Down") },
+	{ key = "k", mods = "LEADER", action = act.ActivatePaneDirection("Up") },
+	{ key = "l", mods = "LEADER", action = act.ActivatePaneDirection("Right") },
+	{ key = "x", mods = "LEADER", action = act.CloseCurrentPane({ confirm = true }) },
+	{ key = "z", mods = "LEADER", action = act.TogglePaneZoomState },
+	{ key = "o", mods = "LEADER", action = act.RotatePanes("Clockwise") },
+
+	-- We can make separate keybindings for resizing panes
+	-- But Wezterm offers custom "mode" in the name of "KeyTable"
+	{ key = "r", mods = "LEADER", action = act.ActivateKeyTable({ name = "resize_pane", one_shot = false }) },
+
+	-- Tab keybindings
+	{ key = "[", mods = "LEADER|SHIFT", action = act.ActivateTabRelative(-1) },
+	{ key = "]", mods = "LEADER|SHIFT", action = act.ActivateTabRelative(1) },
+	{ key = "t", mods = "LEADER", action = act.ShowTabNavigator },
+	-- Key table for moving tabs around
+	{ key = "m", mods = "LEADER", action = act.ActivateKeyTable({ name = "move_tab", one_shot = false }) },
+	-- Lastly, workspace
+	{ key = "w", mods = "LEADER", action = act.ShowLauncherArgs({ flags = "FUZZY|WORKSPACES" }) },
+	{ key = "l", mods = "LEADER|SHIFT", action = wezterm.action.ShowLauncher },
+
+	{
+		key = "d",
+		mods = "LEADER",
+		action = wezterm.action.SpawnCommandInNewTab({
+			args = { "distrobox-host-exec", "bash" },
+		}),
+	},
+	{ key = "k", mods = "CTRL|SHIFT", action = act.ScrollByLine(-1) },
+	{ key = "j", mods = "CTRL|SHIFT", action = act.ScrollByLine(1) },
+	{ key = "PageUp", mods = "CTRL|SHIFT", action = act.ScrollByPage(-1) },
+	{ key = "PageDown", mods = "CTRL|SHIFT", action = act.ScrollByPage(1) },
 }
-config.hyperlink_rules = {
-	-- Linkify things that look like URLs and the host has a TLD name.
-	-- Compiled-in default. Used if you don't specify any hyperlink_rules.
-	{
-		regex = "\\b\\w+://[\\w.-]+\\.[a-z]{2,15}\\S*\\b",
-		format = "$0",
-	},
 
-	-- linkify email addresses
-	-- Compiled-in default. Used if you don't specify any hyperlink_rules.
-	{
-		regex = [[\b\w+@[\w-]+(\.[\w-]+)+\b]],
-		format = "mailto:$0",
+config.key_tables = {
+	resize_pane = {
+		{ key = "h", action = act.AdjustPaneSize({ "Left", 1 }) },
+		{ key = "j", action = act.AdjustPaneSize({ "Down", 1 }) },
+		{ key = "k", action = act.AdjustPaneSize({ "Up", 1 }) },
+		{ key = "l", action = act.AdjustPaneSize({ "Right", 1 }) },
+		{ key = "Escape", action = "PopKeyTable" },
+		{ key = "Enter", action = "PopKeyTable" },
 	},
-
-	-- file:// URI
-	-- Compiled-in default. Used if you don't specify any hyperlink_rules.
-	{
-		regex = [[\bfile://\S*\b]],
-		format = "$0",
-	},
-
-	-- Linkify things that look like URLs with numeric addresses as hosts.
-	-- E.g. http://127.0.0.1:8000 for a local development server,
-	-- or http://192.168.1.1 for the web interface of many routers.
-	{
-		regex = [[\b\w+://(?:[\d]{1,3}\.){3}[\d]{1,3}\S*\b]],
-		format = "$0",
-	},
-
-	-- Make username/project paths clickable. This implies paths like the following are for GitHub.
-	-- As long as a full URL hyperlink regex exists above this it should not match a full URL to
-	-- GitHub or GitLab / BitBucket (i.e. https://gitlab.com/user/project.git is still a whole clickable URL)
-	{
-		regex = [[["]?([\w\d]{1}[-\w\d]+)(/){1}([-\w\d\.]+)["]?]],
-		format = "https://www.github.com/$1/$3",
+	move_tab = {
+		{ key = "h", action = act.MoveTabRelative(-1) },
+		{ key = "j", action = act.MoveTabRelative(-1) },
+		{ key = "k", action = act.MoveTabRelative(1) },
+		{ key = "l", action = act.MoveTabRelative(1) },
+		{ key = "Escape", action = "PopKeyTable" },
+		{ key = "Enter", action = "PopKeyTable" },
 	},
 }
+
+config.launch_menu = {
+	{
+		label = "Host",
+		args = { "distrobox-host-exec", "bash" },
+	},
+}
+
 return config

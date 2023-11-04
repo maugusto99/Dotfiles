@@ -1,4 +1,3 @@
-# ~/.bashrc
 # Sensible Bash - An attempt at saner Bash defaults
 # Maintainer: mrzool <http://mrzool.cc>
 # Repository: https://github.com/mrzool/bash-sensible
@@ -18,10 +17,10 @@ PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
 bind Space:magic-space
 
 # Turn on recursive globbing (enables ** to recurse all directories)
-shopt -s globstar 2> /dev/null
+shopt -s globstar 2>/dev/null
 
 # Case-insensitive globbing (used in pathname expansion)
-shopt -s nocaseglob;
+shopt -s nocaseglob
 
 ## SMARTER TAB-COMPLETION (Readline bindings) ##
 
@@ -73,11 +72,11 @@ bind '"\e[D": backward-char'
 ## BETTER DIRECTORY NAVIGATION ##
 
 # Prepend cd to directory names automatically
-shopt -s autocd 2> /dev/null
+shopt -s autocd 2>/dev/null
 # Correct spelling errors during tab-completion
-shopt -s dirspell 2> /dev/null
+shopt -s dirspell 2>/dev/null
 # Correct spelling errors in arguments supplied to cd
-shopt -s cdspell 2> /dev/null
+shopt -s cdspell 2>/dev/null
 
 # This allows you to bookmark your favorite places across the file system
 # Define a variable containing a path and you will be able to cd into it regardless of the directory you're in
@@ -99,11 +98,17 @@ alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 alias vi='vim'
 alias lspkgs="dpkg-query -W | column -t $argv"
+alias searchpkgs="apt-cache pkgnames | fzf --exact | xargs nala show $argv"
 
 # Exports
 export PATH=/home/augustom/.local/bin:$PATH
-export EDITOR=vim
-export VISUAL=vim
+
+if [[ -f $(which nvim) ]];then
+  export EDITOR=nvim
+else
+  export EDITOR=vim
+fi
+
 export BROWSER=firefox
 export TERMINAL=konsole
 export LESSHISTFILE="-"
@@ -112,8 +117,8 @@ export GTK_USE_PORTAL=1
 
 # Use bash-completion, if available
 
-[[ $PS1 && -f /usr/share/bash-completion/bash_completion ]] && \
-    . /usr/share/bash-completion/bash_completion
+[[ $PS1 && -f /usr/share/bash-completion/bash_completion ]] &&
+	. /usr/share/bash-completion/bash_completion
 
 # fzf variables
 [ -f /usr/share/doc/fzf/examples/key-bindings.bash ] && source /usr/share/doc/fzf/examples/key-bindings.bash
@@ -124,10 +129,19 @@ export FZF_COMPLETION_OPTS="--exact --border"
 [ -f /usr/share/bash-completion/completions/fzf ] && source /usr/share/bash-completion/completions/fzf
 
 _fzf_compgen_path() {
-  fd --hidden --no-follow
+	fd --hidden --no-follow
 }
 
 # Use fd to generate the list for directory completion
 _fzf_compgen_dir() {
-  fd --type d --hidden --no-follow
+	fd --type d --hidden --no-follow
 }
+export FZF_DEFAULT_OPTS="\
+--height=90% \
+--layout reverse \
+--pointer "➜" \
+--cycle  --inline-info \
+--color=bg+:#1e1e2e,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8 \
+--color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
+--color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8"
+

@@ -17,7 +17,7 @@ success_symbol = "[❯](green)"     # The "success_symbol" segment is being set 
 error_symbol = "[✗](red)"
 
 [directory]
-read_only = " "
+read_only = " 󰌾"
 truncation_length = 3
 fish_style_pwd_dir_length = 1
 truncate_to_repo = true # truncates directory to root folder if in github repo
@@ -29,6 +29,19 @@ show_milliseconds = false
 disabled = false
 style = "bold italic yellow"
 
+[hostname]
+ssh_only = false
+format = '@[$hostname](bold green) '
+ssh_symbol = " "
+disabled = false
+
+[username]
+style_user = 'blue bold'
+style_root = 'black bold'
+format = '[$user]($style)'
+disabled = false
+show_always = true
+
 [aws]
 symbol = "  "
 
@@ -37,6 +50,9 @@ symbol = " "
 
 [c]
 symbol = " "
+
+[container]
+disabled = true
 
 [conda]
 symbol = " "
@@ -53,14 +69,23 @@ symbol = " "
 [elm]
 symbol = " "
 
+[fossil_branch]
+symbol = " "
+
 [git_branch]
 symbol = " "
 
 [golang]
 symbol = " "
 
+[guix_shell]
+symbol = " "
+
 [haskell]
 symbol = " "
+
+[haxe]
+symbol = " "
 
 [hg_branch]
 symbol = " "
@@ -75,13 +100,13 @@ symbol = " "
 symbol = " "
 
 [memory_usage]
-symbol = " "
+symbol = "󰍛 "
 
 [meson]
-symbol = "喝 "
+symbol = "󰔷 "
 
 [nim]
-symbol = " "
+symbol = "󰆥 "
 
 [nix_shell]
 symbol = " "
@@ -90,13 +115,16 @@ symbol = " "
 symbol = " "
 
 [package]
-symbol = " "
+symbol = "󰏗 "
+
+[pijul_channel]
+symbol = " "
 
 [python]
 symbol = " "
 
 [rlang]
-symbol = "ﳒ"
+symbol = "󰟔 "
 
 [ruby]
 symbol = " "
@@ -106,6 +134,3 @@ symbol = " "
 
 [scala]
 symbol = " "
-
-[spack]
-symbol = "🅢 "

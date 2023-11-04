@@ -8,7 +8,7 @@ function __fzf_directories -d "Search Directories with fzf"
     end
     set -lx FZF_DEFAULT_COMMAND "fd  --type d --strip-cwd-prefix --hidden --color never --exclude .git"
     set -l directories (fzf  --exact \
-  --preview "lsd --tree --color=always --icon=always {}" \
+  --preview "eza -aT -L 2 --icons --color always {}" \
   --prompt="Search Directories> " \
   --info=hidden \
   --bind "alt-p:change-preview-window(hidden|)" \

@@ -1,13 +1,13 @@
 add_newline = false
-format = "$custom$all"
+format = "$all"
 right_format = "$cmd_duration"
 
-[custom.shell]
-command = """ if [ $STARSHIP_SHELL == "bash" ]; then echo " "; fi """  # shows output of command
-when = """ test "$STARSHIP_SHELL" != "fish" """
-style = "bright bold white"
-format = "[$output  ]($style)"
-shell =["bash"]
+[shell]
+bash_indicator = ' '
+fish_indicator = '󰈺 '
+unknown_indicator = 'mystery shell'
+style = 'white'
+disabled = false
 
 [line_break]
 disabled = false
@@ -134,3 +134,4 @@ symbol = " "
 
 [scala]
 symbol = " "
+

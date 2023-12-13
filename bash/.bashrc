@@ -96,7 +96,6 @@ alias ll='ls -Alhv --color=auto'
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
-alias vi='vim'
 alias lspkgs="dpkg-query -W | column -t $argv"
 alias searchpkgs="apt-cache pkgnames | fzf --exact | xargs nala show $argv"
 
@@ -109,18 +108,21 @@ else
   export EDITOR=vim
 fi
 
+alias vi=$EDITOR
 export BROWSER=firefox
 export TERMINAL=konsole
 export LESSHISTFILE="-"
 export MOZ_ENABLE_WAYLAND=1
 export GTK_USE_PORTAL=1
+export PAGER="less -R"
+
 
 # Use bash-completion, if available
 
 [[ $PS1 && -f /usr/share/bash-completion/bash_completion ]] &&
 	. /usr/share/bash-completion/bash_completion
 
-# fzf variables
+### FZF variables
 [ -f /usr/share/doc/fzf/examples/key-bindings.bash ] && source /usr/share/doc/fzf/examples/key-bindings.bash
 
 export FZF_DEFAULT_COMMAND='fd --type f --color=never --hidden --no-follow'
@@ -145,3 +147,10 @@ export FZF_DEFAULT_OPTS="\
 --color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
 --color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8"
 
+### NNN
+export NNN_OPENER=nvim
+export NNN_PLUG='f:finder;p:preview-tui;d:diffs;c:fzcd;z:autojump;g:git-changes'
+export NNN_OPTS="aAdeiuHUQx"
+export NNN_FCOLORS=030304020000060801030500 # filetype colors. this mimics dircolors
+export LESSUTFCHARDEF="E000-F8FF:p,F0000-FFFFD:p,100000-10FFFD:p"
+export NNN_TRASH=1

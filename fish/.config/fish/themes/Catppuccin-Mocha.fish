@@ -28,6 +28,7 @@ set -l fish_pager_color_prefix f5c2e7
 set -l fish_pager_color_completion cdd6f4
 set -l fish_pager_color_description 6c7086
 
+
 set -Ux FZF_DEFAULT_OPTS "\
 --height=90%
 --layout reverse

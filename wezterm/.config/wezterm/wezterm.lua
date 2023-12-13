@@ -3,22 +3,22 @@ local act = wezterm.action
 
 local config = {}
 
-config.default_prog = { "/usr/bin/fish" }
+config.default_prog = { "/usr/bin/fish" ,"-l"}
 config.front_end = "WebGpu"
-config.adjust_window_size_when_changing_font_size = false
 config.webgpu_power_preference = "HighPerformance"
+config.adjust_window_size_when_changing_font_size = false
 config.scrollback_lines = 100000
 config.hide_tab_bar_if_only_one_tab = true
 config.force_reverse_video_cursor = true
 config.window_close_confirmation = "NeverPrompt"
 config.color_scheme = "Catppuccin Mocha"
-config.bold_brightens_ansi_colors = true
 config.initial_cols = 140
 config.initial_rows = 30
 
 config.font = wezterm.font({
 	family = "JetBrains Mono",
 })
+config.bold_brightens_ansi_colors = true
 config.font_size = 10.0
 config.allow_square_glyphs_to_overflow_width = "Always"
 

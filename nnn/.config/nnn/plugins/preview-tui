@@ -230,7 +230,7 @@ fifo_pager() {
         exec > "$FIFOPATH"
         if [ "$cmd" = "pager" ]; then
             if exists bat; then
-                bat --terminal-width="$cols" --decorations=always --color=always \
+                bat  --decorations=never --color=always \
                     --paging=never --style="$NNN_BATSTYLE" --theme="$NNN_BATTHEME" "$@" &
             else
                 $NNN_PAGER "$@" &
@@ -348,8 +348,8 @@ preview_file() {
             ls -F --group-directories-first | head -n "$((lines - 3))" | "$(dirname "$0")"/.iconlookup -l "$cols" -B "$BSTR" -b " "
         elif exists tree; then
             fifo_pager tree --filelimit "$(find . -maxdepth 1 | wc -l)" -L 3 -C -F --dirsfirst --noreport
-        elif exists exa; then
-            eza -T -L 1 --icons always
+        elif exists eza; then
+          fifo_pager eza -aT -L=2 --group-directories-first --color=always --icons=always
         else
             fifo_pager ls -F --group-directories-first --color=always
         fi

@@ -5,9 +5,20 @@ $fd -0 -d 2 -S +100M
 $grep -rlZ pattern
 $rg -l0 pattern
 $fzf -m | tr '\n' '\0'
--maxdepth 1 -size +100M
--maxdepth 1 -name pattern
--maxdepth 1 -name pattern
--maxdepth 1 -name Fa
+$fd -0 preview
 $fd -0H preview
-$fzf -m | tr '\n' '\0'
+$rga diffusion
+$fd -0H -e lua
+$fd -0H -e lua
+$fd -0H -e lua
+$fd -0H -e yaml
+$fd -0H -e docx
+$fd -0H preview
+$fd -H0 -e docx
+$fd -0 caca
+$fd -0H -e zip
+-maxdepth 1 -size +100M
+-size +100M
+$fd -0H -e zip
+$fd -H0 -e zip
+$fd -0 caca

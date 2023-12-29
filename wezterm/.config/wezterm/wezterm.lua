@@ -1,13 +1,13 @@
 local wezterm = require("wezterm")
 local act = wezterm.action
 
-local config = {}
+local config = wezterm.config_builder()
 
-config.default_prog = { "/usr/bin/fish" ,"-l"}
+config.default_prog = { "/usr/bin/fish", "-l" }
 config.front_end = "WebGpu"
 config.webgpu_power_preference = "HighPerformance"
 config.adjust_window_size_when_changing_font_size = false
-config.scrollback_lines = 100000
+config.scrollback_lines = 10000
 config.hide_tab_bar_if_only_one_tab = true
 config.force_reverse_video_cursor = true
 config.window_close_confirmation = "NeverPrompt"
@@ -18,13 +18,14 @@ config.initial_rows = 30
 config.font = wezterm.font({
 	family = "JetBrains Mono",
 })
+
 config.bold_brightens_ansi_colors = true
 config.font_size = 10.0
 config.allow_square_glyphs_to_overflow_width = "Always"
 
 config.window_frame = {
 	font_size = 9.0,
-	font = wezterm.font({ family = "Roboto", weight = "Medium" }),
+	font = wezterm.font({ family = "Inter", weight = "Regular" }),
 }
 
 config.window_padding = {
@@ -36,20 +37,26 @@ config.window_padding = {
 -- Keys
 config.leader = { key = "phys:Space", mods = "CTRL", timeout_milliseconds = 1000 }
 config.keys = {
+	{
+		key = "phys:Space",
+		mods = "LEADER|CTRL",
+		action = wezterm.action.SendKey({ key = "phys:Space", mods = "CTRL" }),
+	},
+
 	{ key = "n", mods = "SHIFT|CTRL", action = act.SendKey({ key = "n", mods = "SHIFT|CTRL" }) },
 	{ key = "c", mods = "LEADER", action = act.ActivateCopyMode },
 	{ key = "p", mods = "LEADER", action = act.ActivateCommandPalette },
 
 	-- Pane keybindings
-	{ key = "s", mods = "LEADER", action = act.SplitVertical({ domain = "CurrentPaneDomain" }) },
-	{ key = "v", mods = "LEADER", action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
+	{ key = "-", mods = "LEADER", action = act.SplitVertical({ domain = "CurrentPaneDomain" }) },
+	{ key = "|", mods = "LEADER", action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
 
 	-- SHIFT is for when caps lock is on
 	{ key = "h", mods = "LEADER", action = act.ActivatePaneDirection("Left") },
 	{ key = "j", mods = "LEADER", action = act.ActivatePaneDirection("Down") },
 	{ key = "k", mods = "LEADER", action = act.ActivatePaneDirection("Up") },
 	{ key = "l", mods = "LEADER", action = act.ActivatePaneDirection("Right") },
-	{ key = "x", mods = "LEADER", action = act.CloseCurrentPane({ confirm = true }) },
+	{ key = "x", mods = "LEADER", action = act.CloseCurrentPane({ confirm = false }) },
 	{ key = "z", mods = "LEADER", action = act.TogglePaneZoomState },
 	{ key = "o", mods = "LEADER", action = act.RotatePanes("Clockwise") },
 
@@ -96,13 +103,6 @@ config.key_tables = {
 		{ key = "l", action = act.MoveTabRelative(1) },
 		{ key = "Escape", action = "PopKeyTable" },
 		{ key = "Enter", action = "PopKeyTable" },
-	},
-}
-
-config.launch_menu = {
-	{
-		label = "Host",
-		args = { "distrobox-host-exec", "bash" },
 	},
 }
 

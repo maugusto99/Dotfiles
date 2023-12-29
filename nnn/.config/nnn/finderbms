@@ -22,3 +22,5 @@ $fd -0H -e zip
 $fd -0H -e zip
 $fd -H0 -e zip
 $fd -0 caca
+-maxdepth 1 -size +100M
+$fd -0H -e zip

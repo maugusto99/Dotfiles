@@ -102,10 +102,10 @@ alias searchpkgs="apt-cache pkgnames | fzf --exact | xargs nala show $argv"
 # Exports
 export PATH=/home/augustom/.local/bin:$PATH
 
-if [[ -f $(which nvim) ]];then
-  export EDITOR=nvim
+if [[ -f $(which nvim) ]]; then
+	export EDITOR=nvim
 else
-  export EDITOR=vim
+	export EDITOR=vim
 fi
 
 alias vi=$EDITOR
@@ -114,8 +114,7 @@ export TERMINAL=konsole
 export LESSHISTFILE="-"
 export MOZ_ENABLE_WAYLAND=1
 export GTK_USE_PORTAL=1
-export PAGER="less -R"
-
+export PAGER="less -Ri"
 
 # Use bash-completion, if available
 
@@ -149,8 +148,8 @@ export FZF_DEFAULT_OPTS="\
 
 ### NNN
 export NNN_OPENER=nvim
-export NNN_PLUG='f:finder;p:preview-tui;d:diffs;c:fzcd;z:autojump;g:git-changes'
-export NNN_OPTS="aAdeiuHUQx"
+export NNN_PLUG='f:finder;p:preview-tui;d:diffs;c:fzcd;z:autojump;g:getplugs'
+export NNN_OPTS="AdeiuHUQx"
 export NNN_FCOLORS=030304020000060801030500 # filetype colors. this mimics dircolors
 export LESSUTFCHARDEF="E000-F8FF:p,F0000-FFFFD:p,100000-10FFFD:p"
 export NNN_TRASH=1

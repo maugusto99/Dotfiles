@@ -9,7 +9,9 @@ function __fzf_directories -d "Search Directories with fzf"
     set -lx FZF_DEFAULT_COMMAND "fd  --type d --strip-cwd-prefix --hidden --color never --exclude .git"
     set -l directories (fzf  --exact \
   --preview "eza -aT -L 2 --icons --color always {}" \
-  --prompt="Search Directories> " \
+  --preview-label="[ Directory content ]" \
+  --preview-window=,border-rounded \
+  --prompt="Directories> " \
   --info=hidden \
   --bind "alt-p:change-preview-window(hidden|)" \
   --bind "ctrl-y:execute-silent(echo -n {1..} | $clipboard)+abort" \

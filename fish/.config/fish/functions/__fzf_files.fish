@@ -9,9 +9,11 @@ function __fzf_files -d "Search files with fzf and open with $EDITOR"
     set -lx FZF_DEFAULT_COMMAND "fd --type f --strip-cwd-prefix --hidden --color never "
     set -l files (fzf  --exact \
   --preview "bat -n --color=always {}" --multi \
-  --prompt="Search Files> " \
-  --info=hidden \
-  --bind "alt-p:change-preview-window(hidden|)" \
+  --preview-window=hidden,border-rounded \
+  --preview-label="[ File preview ]" \
+  --prompt="Files> " \
+  # --info=hidden \
+  --bind "alt-p:change-preview-window(nohidden|)" \
   --bind "ctrl-y:execute-silent(echo -n {1..} | $clipboard)+abort"\
   --color header:italic --header "Press CTRL-Y to copy path into clipboard")
     if test -n "$files"

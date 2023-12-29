@@ -4,3 +4,4 @@
 .cache
 .vscode
 .var
+.local/share/containers/storage

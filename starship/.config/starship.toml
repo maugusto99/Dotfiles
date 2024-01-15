@@ -28,6 +28,7 @@ min_time = 4
 show_milliseconds = false
 disabled = false
 style = "bold italic yellow"
+format = "[took](italic) [$duration]($style) "
 
 [hostname]
 ssh_only = false
@@ -134,4 +135,3 @@ symbol = " "
 
 [scala]
 symbol = " "
-

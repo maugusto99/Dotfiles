@@ -1,2 +1,8 @@
-EDITOR ("nvim")
-edit mode sync
+set(0, "defaulttextfontsize", 24)  % title
+set(0, "defaultaxesfontsize", 13)  % axes labels
+set(0, "defaulttextfontsize", 11)  % text labels
+
+set(0, "defaultaxesfontname", "Roboto Medium")
+set(0, "defaulttextfontname", "Roboto Medium")
+
+set(0, "defaultlinelinewidth", 2)

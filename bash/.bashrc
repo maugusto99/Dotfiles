@@ -2,7 +2,6 @@
 # Maintainer: mrzool <http://mrzool.cc>
 # Repository: https://github.com/mrzool/bash-sensible
 # Version: 0.2.2
-
 ## GENERAL OPTIONS ##
 
 # Update window size after every command
@@ -96,24 +95,19 @@ alias ll='ls -Alhv --color=auto'
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
-alias lspkgs="dpkg-query -W | column -t $argv"
-alias searchpkgs="apt-cache pkgnames | fzf --exact | xargs nala show $argv"
+#alias lspkgs="dpkg-query -W | column -t $argv"
+#alias searchpkgs="apt-cache pkgnames | fzf --exact | xargs nala show $argv"
 
 # Exports
 export PATH=/home/augustom/.local/bin:$PATH
 
-if [[ -f $(which nvim) ]]; then
-	export EDITOR=nvim
-else
-	export EDITOR=vim
-fi
+export EDITOR=vim
 
-alias vi=$EDITOR
+alias vi="$EDITOR"
 export BROWSER=firefox
-export TERMINAL=konsole
+export TERMINAL=gnome-console
 export LESSHISTFILE="-"
 export MOZ_ENABLE_WAYLAND=1
-export GTK_USE_PORTAL=1
 export PAGER="less -Ri"
 
 # Use bash-completion, if available
@@ -123,11 +117,12 @@ export PAGER="less -Ri"
 
 ### FZF variables
 [ -f /usr/share/doc/fzf/examples/key-bindings.bash ] && source /usr/share/doc/fzf/examples/key-bindings.bash
+[ -f /usr/share/fzf/shell/key-bindings.bash ] && source /usr/share/fzf/shell/key-bindings.bash
 
 export FZF_DEFAULT_COMMAND='fd --type f --color=never --hidden --no-follow'
 export FZF_COMPLETION_OPTS="--exact --border"
 
-[ -f /usr/share/bash-completion/completions/fzf ] && source /usr/share/bash-completion/completions/fzf
+[ -f /etc/bash_completion.d/fzf ] && source /etc/bash_completion.d/fzf
 
 _fzf_compgen_path() {
 	fd --hidden --no-follow

@@ -177,7 +177,7 @@ start_preview() {
 		kitty @ goto-layout splits
 		# Trying to use kitty's integrated window management as the split window.
 		kitty @ launch --no-response --title "preview-tui" --keep-focus \
-			--cwd "$PWD" "${ENVVARS[@]}" --location "${NNN_SPLIT}split" "$0" >/dev/null
+			--cwd "$PWD" "${ENVVARS[@]}" --location "${NNN_SPLIT}split" "$0" "$1"
 		;;
 	wezterm)
 		export "${ENVVARS[@]}"
@@ -242,8 +242,8 @@ fifo_pager() {
 		exec >"$FIFOPATH"
 		if [ "$cmd" = "pager" ]; then
 			if exists bat; then
-				bat --decorations=never --style="$NNN_BATSTYLE" --theme="$NNN_BATTHEME" \
-					--paging=never --color=always "$@" &
+				bat --terminal-width="$cols" --decorations=always --color=always \
+					--paging=never --style="$NNN_BATSTYLE" --theme="$NNN_BATTHEME" "$@" &
 			else
 				$NNN_PAGER "$@" &
 			fi
@@ -361,7 +361,7 @@ preview_file() {
 			# shellcheck disable=SC2012
 			ls -F --group-directories-first | head -n "$((lines - 3))" | "$(dirname "$0")"/.iconlookup -l "$cols" -B "$BSTR" -b " "
 		elif exists eza; then
-			fifo_pager eza -aT -L=2 --group-directories-first --color=always --icons=always
+      fifo_pager eza -aT -L=2 --group-directories-first --color=always  --icons=always
 		elif exists tree; then
 			fifo_pager tree --filelimit "$(find . -maxdepth 1 | wc -l)" -L 3 -C -F --dirsfirst --noreport
 		else

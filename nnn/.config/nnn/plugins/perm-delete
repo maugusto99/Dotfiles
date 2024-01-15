@@ -1,0 +1,34 @@
+#!/usr/bin/env sh
+
+# Determine file path(s) to delete
+selection_file=${NNN_SEL:-${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.selection}
+hovered_file="$1"
+
+# Function to clear nnn selection
+clear_selection() {
+	if [ -p "$NNN_PIPE" ]; then
+		printf "-" >"$NNN_PIPE"
+	fi
+}
+
+# Check for empty selection file
+if [ -s "$selection_file" ]; then
+	# Prompt for confirmation to delete selected files
+	printf "rm -rf selected files? "
+	read -r user_response_selection
+else
+	# Prompt for confirmation to delete hovered file
+	printf "rm -rf %s? " "$hovered_file"
+	read -r user_response_hovered
+fi
+
+# Handle deletion if user confirms
+if [ "$user_response_selection" = "y" ]; then
+	# Delete selected files
+	xargs -0 rm -rf <"$selection_file"
+	clear_selection
+elif [ "$user_response_hovered" = "y" ]; then
+	# Delete hovered file
+	rm -rf "$hovered_file"
+	clear_selection
+fi

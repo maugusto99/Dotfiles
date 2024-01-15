@@ -326,13 +326,13 @@ filextype */
         \ dolphin %f &,
 
 
-fileviewer {*.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm},<image/*>
-       \ wezterm imgcat --width %pw --height %ph %c:p %pd
+" fileviewer {*.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm},<image/*>
+"        \ wezterm imgcat --width %pw --height %ph %c:p %pd
 
-" fileviewer {*.jpg,*.jpeg,*.png,*.gif}
-"     \ kitten icat --silent --transfer-mode=file --place=%pwx%ph@%pxx%py %c >/dev/tty </dev/tty %N
-"     \ %pc
-"     \ kitten icat --clear --silent >/dev/tty </dev/tty %N
+fileviewer {*.jpg,*.jpeg,*.png,*.gif}
+    \ kitten icat --silent --transfer-mode=file --place=%pwx%ph@%pxx%py %c >/dev/tty </dev/tty %N
+    \ %pc
+    \ kitten icat --clear --silent >/dev/tty </dev/tty %N
 
 fileviewer *[^\/],.*[^\/]  bat --color always --wrap never --pager never %c -p
 fileviewer */,.*/ eza -a -T --icons=always --color=always -L 2

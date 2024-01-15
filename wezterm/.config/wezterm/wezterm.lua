@@ -1,7 +1,8 @@
 local wezterm = require("wezterm")
-local act = wezterm.action
 
 local config = wezterm.config_builder()
+
+require("keys").setup(config)
 
 config.default_prog = { "/usr/bin/fish", "-l" }
 config.front_end = "WebGpu"
@@ -14,9 +15,13 @@ config.window_close_confirmation = "NeverPrompt"
 config.color_scheme = "Catppuccin Mocha"
 config.initial_cols = 140
 config.initial_rows = 30
+config.default_cursor_style = "SteadyBar"
 
 config.font = wezterm.font({
 	family = "JetBrains Mono",
+	-- harfbuzz_features = { "calt=0", "clig=0", "liga=0" },
+	-- stretch="Expanded"
+	weight = "Light",
 })
 
 config.bold_brightens_ansi_colors = true
@@ -25,7 +30,7 @@ config.allow_square_glyphs_to_overflow_width = "Always"
 
 config.window_frame = {
 	font_size = 9.0,
-	font = wezterm.font({ family = "Inter", weight = "Regular" }),
+	font = wezterm.font({ family = "Roboto", weight = "Regular" }),
 }
 
 config.window_padding = {
@@ -33,77 +38,6 @@ config.window_padding = {
 	right = 1,
 	top = 1,
 	bottom = 1,
-}
--- Keys
-config.leader = { key = "phys:Space", mods = "CTRL", timeout_milliseconds = 1000 }
-config.keys = {
-	{
-		key = "phys:Space",
-		mods = "LEADER|CTRL",
-		action = wezterm.action.SendKey({ key = "phys:Space", mods = "CTRL" }),
-	},
-
-	{ key = "n", mods = "SHIFT|CTRL", action = act.SendKey({ key = "n", mods = "SHIFT|CTRL" }) },
-	{ key = "c", mods = "LEADER", action = act.ActivateCopyMode },
-	{ key = "p", mods = "LEADER", action = act.ActivateCommandPalette },
-
-	-- Pane keybindings
-	{ key = "-", mods = "LEADER", action = act.SplitVertical({ domain = "CurrentPaneDomain" }) },
-	{ key = "|", mods = "LEADER", action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
-
-	-- SHIFT is for when caps lock is on
-	{ key = "h", mods = "LEADER", action = act.ActivatePaneDirection("Left") },
-	{ key = "j", mods = "LEADER", action = act.ActivatePaneDirection("Down") },
-	{ key = "k", mods = "LEADER", action = act.ActivatePaneDirection("Up") },
-	{ key = "l", mods = "LEADER", action = act.ActivatePaneDirection("Right") },
-	{ key = "x", mods = "LEADER", action = act.CloseCurrentPane({ confirm = false }) },
-	{ key = "z", mods = "LEADER", action = act.TogglePaneZoomState },
-	{ key = "o", mods = "LEADER", action = act.RotatePanes("Clockwise") },
-
-	-- We can make separate keybindings for resizing panes
-	-- But Wezterm offers custom "mode" in the name of "KeyTable"
-	{ key = "r", mods = "LEADER", action = act.ActivateKeyTable({ name = "resize_pane", one_shot = false }) },
-
-	-- Tab keybindings
-	{ key = "[", mods = "LEADER|SHIFT", action = act.ActivateTabRelative(-1) },
-	{ key = "]", mods = "LEADER|SHIFT", action = act.ActivateTabRelative(1) },
-	{ key = "t", mods = "LEADER", action = act.ShowTabNavigator },
-	-- Key table for moving tabs around
-	{ key = "m", mods = "LEADER", action = act.ActivateKeyTable({ name = "move_tab", one_shot = false }) },
-	-- Lastly, workspace
-	{ key = "w", mods = "LEADER", action = act.ShowLauncherArgs({ flags = "FUZZY|WORKSPACES" }) },
-	{ key = "l", mods = "LEADER|SHIFT", action = wezterm.action.ShowLauncher },
-
-	{
-		key = "d",
-		mods = "LEADER",
-		action = wezterm.action.SpawnCommandInNewTab({
-			args = { "distrobox-host-exec", "bash" },
-		}),
-	},
-	{ key = "k", mods = "CTRL|SHIFT", action = act.ScrollByLine(-1) },
-	{ key = "j", mods = "CTRL|SHIFT", action = act.ScrollByLine(1) },
-	{ key = "PageUp", mods = "CTRL|SHIFT", action = act.ScrollByPage(-1) },
-	{ key = "PageDown", mods = "CTRL|SHIFT", action = act.ScrollByPage(1) },
-}
-
-config.key_tables = {
-	resize_pane = {
-		{ key = "h", action = act.AdjustPaneSize({ "Left", 1 }) },
-		{ key = "j", action = act.AdjustPaneSize({ "Down", 1 }) },
-		{ key = "k", action = act.AdjustPaneSize({ "Up", 1 }) },
-		{ key = "l", action = act.AdjustPaneSize({ "Right", 1 }) },
-		{ key = "Escape", action = "PopKeyTable" },
-		{ key = "Enter", action = "PopKeyTable" },
-	},
-	move_tab = {
-		{ key = "h", action = act.MoveTabRelative(-1) },
-		{ key = "j", action = act.MoveTabRelative(-1) },
-		{ key = "k", action = act.MoveTabRelative(1) },
-		{ key = "l", action = act.MoveTabRelative(1) },
-		{ key = "Escape", action = "PopKeyTable" },
-		{ key = "Enter", action = "PopKeyTable" },
-	},
 }
 
 return config

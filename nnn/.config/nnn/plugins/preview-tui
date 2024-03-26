@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 # Description: Terminal based file previewer
 #
 # Note: This plugin needs a "NNN_FIFO" to work. See man.
@@ -87,7 +86,7 @@
 # Authors: Todd Yamakawa, Léo Villeveygoux, @Recidiviste, Mario Ortiz Manero, Luuk van Baal, @WanderLanz
 
 NNN_SPLIT=${NNN_SPLIT:-}           # Set permanent split direction
-NNN_TERMINAL=${NNN_TERMINAL:-}     # Set external terminal to be used
+NNN_TERMINAL=${NNN_TERMINAL:rio}   # Set external terminal to be used
 NNN_SPLITSIZE=${NNN_SPLITSIZE:-50} # Set previewer split size percentage
 TMPDIR=${TMPDIR:-/tmp}
 NNN_PARENT=${NNN_FIFO#*.}
@@ -242,8 +241,8 @@ fifo_pager() {
 		exec >"$FIFOPATH"
 		if [ "$cmd" = "pager" ]; then
 			if exists bat; then
-				bat --terminal-width="$cols" --decorations=always --color=always \
-					--paging=never --style="$NNN_BATSTYLE" --theme="$NNN_BATTHEME" "$@" &
+				bat --terminal-width="$cols" --decorations=never --color=always \
+					--paging=never --wrap=never "$@" &
 			else
 				$NNN_PAGER "$@" &
 			fi
@@ -361,7 +360,7 @@ preview_file() {
 			# shellcheck disable=SC2012
 			ls -F --group-directories-first | head -n "$((lines - 3))" | "$(dirname "$0")"/.iconlookup -l "$cols" -B "$BSTR" -b " "
 		elif exists eza; then
-      fifo_pager eza -aT -L=2 --group-directories-first --color=always  --icons=always
+			fifo_pager eza -aT -L=2 --group-directories-first --color=always --icons=always
 		elif exists tree; then
 			fifo_pager tree --filelimit "$(find . -maxdepth 1 | wc -l)" -L 3 -C -F --dirsfirst --noreport
 		else

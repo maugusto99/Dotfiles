@@ -5,9 +5,8 @@ right_format = "$cmd_duration"
 [shell]
 bash_indicator = ' '
 fish_indicator = '󰈺 '
-unknown_indicator = 'mystery shell'
 style = 'white'
-disabled = false
+disabled = true
 
 [line_break]
 disabled = false
@@ -21,17 +20,17 @@ read_only = " 󰌾"
 truncation_length = 3
 fish_style_pwd_dir_length = 1
 truncate_to_repo = true # truncates directory to root folder if in github repo
-style = "bold italic cyan"
+style = "italic cyan"
 
 [cmd_duration]
 min_time = 4
 show_milliseconds = false
 disabled = false
-style = "bold italic yellow"
+style = "italic yellow"
 format = "[took](italic) [$duration]($style) "
 
 [hostname]
-ssh_only = false
+ssh_only = true
 format = '@[$hostname](bold green) '
 ssh_symbol = " "
 disabled = false
@@ -40,8 +39,11 @@ disabled = false
 style_user = 'blue bold'
 style_root = 'black bold'
 format = '[$user]($style)'
-disabled = false
+disabled = true
 show_always = true
+
+[container]
+disabled = true
 
 [aws]
 symbol = "  "
@@ -52,11 +54,11 @@ symbol = " "
 [c]
 symbol = " "
 
-[container]
-disabled = true
-
 [conda]
 symbol = " "
+
+[crystal]
+symbol = " "
 
 [dart]
 symbol = " "
@@ -65,10 +67,13 @@ symbol = " "
 symbol = " "
 
 [elixir]
-symbol = " "
+symbol = " "
 
 [elm]
 symbol = " "
+
+[fennel]
+symbol = " "
 
 [fossil_branch]
 symbol = " "
@@ -97,6 +102,9 @@ symbol = " "
 [julia]
 symbol = " "
 
+[kotlin]
+symbol = " "
+
 [lua]
 symbol = " "
 
@@ -115,8 +123,58 @@ symbol = " "
 [nodejs]
 symbol = " "
 
+[ocaml]
+symbol = " "
+
+[os.symbols]
+Alpaquita = " "
+Alpine = " "
+Amazon = " "
+Android = " "
+Arch = " "
+Artix = " "
+CentOS = " "
+Debian = " "
+DragonFly = " "
+Emscripten = " "
+EndeavourOS = " "
+Fedora = " "
+FreeBSD = " "
+Garuda = "󰛓 "
+Gentoo = " "
+HardenedBSD = "󰞌 "
+Illumos = "󰈸 "
+Linux = " "
+Mabox = " "
+Macos = " "
+Manjaro = " "
+Mariner = " "
+MidnightBSD = " "
+Mint = " "
+NetBSD = " "
+NixOS = " "
+OpenBSD = "󰈺 "
+openSUSE = " "
+OracleLinux = "󰌷 "
+Pop = " "
+Raspbian = " "
+Redhat = " "
+RedHatEnterprise = " "
+Redox = "󰀘 "
+Solus = "󰠳 "
+SUSE = " "
+Ubuntu = " "
+Unknown = " "
+Windows = "󰍲 "
+
 [package]
 symbol = "󰏗 "
+
+[perl]
+symbol = " "
+
+[php]
+symbol = " "
 
 [pijul_channel]
 symbol = " "
@@ -135,3 +193,9 @@ symbol = " "
 
 [scala]
 symbol = " "
+
+[swift]
+symbol = " "
+
+[zig]
+symbol = " "

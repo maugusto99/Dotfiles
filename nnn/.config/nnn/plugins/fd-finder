@@ -7,5 +7,5 @@ read -r pattern
 
 if [ -n "$pattern" ]; then
 	printf "%s" "+l" >"$NNN_PIPE"
-	eval "fd -HI $pattern -0" >"$NNN_PIPE"
+	eval "fd -I $pattern -0" >"$NNN_PIPE"
 fi

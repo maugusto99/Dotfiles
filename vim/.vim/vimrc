@@ -35,7 +35,7 @@ if has('persistent_undo')         "check if your vim version supports
 endif
 
 set noswapfile
-set viminfo='10,<100,:100,%,n~/.vim/.viminfo
+set viminfo+=n~/.vim/viminfo
 set t_Co=256                    " Set if term supports 256 colors.
 set wildmenu
 set cursorline

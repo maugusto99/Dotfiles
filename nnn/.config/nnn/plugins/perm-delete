@@ -13,12 +13,14 @@ clear_selection() {
 
 # Check for empty selection file
 if [ -s "$selection_file" ]; then
+	# Remove null characters for printing files to be deleted
+	selected_files=$(tr '\0' '\n' <"$selection_file")
 	# Prompt for confirmation to delete selected files
-	printf "rm -rf selected files? "
+	printf "%s\nDo you wanna permanently remove those files? [y-n] " "$selected_files"
 	read -r user_response_selection
 else
 	# Prompt for confirmation to delete hovered file
-	printf "rm -rf %s? " "$hovered_file"
+	printf "rm -rf %s? [y-n] " "$hovered_file"
 	read -r user_response_hovered
 fi
 
@@ -31,4 +33,7 @@ elif [ "$user_response_hovered" = "y" ]; then
 	# Delete hovered file
 	rm -rf "$hovered_file"
 	clear_selection
+else
+	echo "Please select a valid response" 1>&2
+  exit 1
 fi

@@ -3,73 +3,83 @@ local act = wezterm.action
 
 local M = {} -- This is Module definition
 
-function M.setup(config) -- function inside the Module
-	config.leader = { key = "phys:Space", mods = "CTRL", timeout_milliseconds = 1000 }
+M.mod = "SHIFT|CTRL"
+
+M.smart_split = wezterm.action_callback(function(window, pane)
+	local dim = pane:get_dimensions()
+	if dim.pixel_height > dim.pixel_width then
+		window:perform_action(act.SplitVertical({ domain = "CurrentPaneDomain" }), pane)
+	else
+		window:perform_action(act.SplitHorizontal({ domain = "CurrentPaneDomain" }), pane)
+	end
+end)
+
+function M.setup(config)
+	config.disable_default_key_bindings = true
+
 	config.keys = {
-		{
-			key = "phys:Space",
-			mods = "LEADER|CTRL",
-			action = wezterm.action.SendKey({ key = "phys:Space", mods = "CTRL" }),
-		},
+		-- Scrollback
+		{ mods = M.mod, key = "k", action = act.ScrollByLine(-1) },
+		{ mods = M.mod, key = "j", action = act.ScrollByLine(1) },
+		-- New Tab
+		{ mods = M.mod, key = "t", action = act.SpawnTab("CurrentPaneDomain") },
+		-- Splits
+		{ mods = M.mod, key = "Enter", action = M.smart_split },
+		{ mods = M.mod, key = "|", action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
+		{ mods = M.mod, key = "_", action = act.SplitVertical({ domain = "CurrentPaneDomain" }) },
+		-- Move Tabs
+		{ mods = M.mod, key = ">", action = act.MoveTabRelative(1) },
+		{ mods = M.mod, key = "<", action = act.MoveTabRelative(-1) },
+		-- Acivate Tabs
+		{ mods = M.mod, key = "l", action = act({ ActivateTabRelative = 1 }) },
+		{ mods = M.mod, key = "h", action = act({ ActivateTabRelative = -1 }) },
+		{ mods = M.mod, key = "R", action = wezterm.action.RotatePanes("Clockwise") },
+		{ key = "Tab", mods = "CTRL", action = act({ ActivateTabRelative = 1 }) },
+		{ key = "Tab", mods = "CTRL|SHIFT", action = act({ ActivateTabRelative = -1 }) },
+		-- Activate Panes
+		{ key = "h", mods = "ALT|CTRL", action = act.ActivatePaneDirection("Left") },
+		{ key = "l", mods = "ALT|CTRL", action = act.ActivatePaneDirection("Right") },
+		{ key = "k", mods = "ALT|CTRL", action = act.ActivatePaneDirection("Up") },
+		{ key = "j", mods = "ALT|CTRL", action = act.ActivatePaneDirection("Down") },
 
-		{ key = "n", mods = "SHIFT|CTRL", action = act.SendKey({ key = "n", mods = "SHIFT|CTRL" }) },
-		{ key = "c", mods = "LEADER", action = act.ActivateCopyMode },
-		{ key = "p", mods = "LEADER", action = act.ActivateCommandPalette },
+		-- Activate pane interactive
+		{ key = "s", mods = "ALT|CTRL", action = act.PaneSelect({ mode = "Activate" }) },
 
-		-- Pane keybindings
-		{ key = "-", mods = "LEADER", action = act.SplitVertical({ domain = "CurrentPaneDomain" }) },
-		{ key = "|", mods = "LEADER", action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
+		-- show the pane selection mode, but have it swap the active and selected panes
+		{ mods = M.mod, key = "S", action = wezterm.action.PaneSelect({ mode = "SwapWithActive" }) },
 
-		-- SHIFT is for when caps lock is on
-		{ key = "h", mods = "LEADER", action = act.ActivatePaneDirection("Left") },
-		{ key = "j", mods = "LEADER", action = act.ActivatePaneDirection("Down") },
-		{ key = "k", mods = "LEADER", action = act.ActivatePaneDirection("Up") },
-		{ key = "l", mods = "LEADER", action = act.ActivatePaneDirection("Right") },
-		{ key = "x", mods = "LEADER", action = act.CloseCurrentPane({ confirm = false }) },
-		{ key = "z", mods = "LEADER", action = act.TogglePaneZoomState },
-		{ key = "o", mods = "LEADER", action = act.RotatePanes("Clockwise") },
+		-- Clipboard
+		{ mods = M.mod, key = "C", action = act.CopyTo("Clipboard") },
+		{ mods = M.mod, key = "V", action = act.PasteFrom("Clipboard") },
+		{ mods = M.mod, key = "Space", action = act.QuickSelect },
+		{ mods = M.mod, key = "X", action = act.ActivateCopyMode },
+		{ mods = M.mod, key = "f", action = act.Search("CurrentSelectionOrEmptyString") },
+		{ mods = M.mod, key = "Z", action = act.TogglePaneZoomState },
+		{ mods = M.mod, key = "p", action = act.ActivateCommandPalette },
 
-		-- We can make separate keybindings for resizing panes
-		-- But Wezterm offers custom "mode" in the name of "KeyTable"
-		{ key = "r", mods = "LEADER", action = act.ActivateKeyTable({ name = "resize_pane", one_shot = false }) },
+		-- Font resize
+		{ mods = "CTRL", key = "+", action = act.IncreaseFontSize },
+		{ mods = "CTRL", key = "-", action = act.DecreaseFontSize },
+		{ mods = "CTRL", key = "Backspace", action = act.ResetFontSize },
 
-		-- Tab keybindings
-		{ key = "[", mods = "LEADER|SHIFT", action = act.ActivateTabRelative(-1) },
-		{ key = "]", mods = "LEADER|SHIFT", action = act.ActivateTabRelative(1) },
-		{ key = "t", mods = "LEADER", action = act.ShowTabNavigator },
-		-- Key table for moving tabs around
-		{ key = "m", mods = "LEADER", action = act.ActivateKeyTable({ name = "move_tab", one_shot = false }) },
-		-- Lastly, workspace
-		{ key = "w", mods = "LEADER", action = act.ShowLauncherArgs({ flags = "FUZZY|WORKSPACES" }) },
-		{ key = "l", mods = "LEADER|SHIFT", action = wezterm.action.ShowLauncher },
-
+		-- Open new tab in distrobox host
 		{
 			key = "d",
-			mods = "LEADER",
-			action = wezterm.action.SpawnCommandInNewTab({
-				args = { "distrobox-host-exec", "bash" },
-			}),
+			mods = M.mod,
+			action = wezterm.action.SpawnCommandInNewTab({ args = { "distrobox-host-exec", "bash" } }),
 		},
-		{ key = "k", mods = "CTRL|SHIFT", action = act.ScrollByLine(-1) },
-		{ key = "j", mods = "CTRL|SHIFT", action = act.ScrollByLine(1) },
+
 		{ key = "PageUp", mods = "CTRL|SHIFT", action = act.ScrollByPage(-1) },
 		{ key = "PageDown", mods = "CTRL|SHIFT", action = act.ScrollByPage(1) },
+		{ key = "r", mods = M.mod, action = act.ActivateKeyTable({ name = "resize_pane", one_shot = false }) },
 	}
 
 	config.key_tables = {
 		resize_pane = {
-			{ key = "h", action = act.AdjustPaneSize({ "Left", 1 }) },
-			{ key = "j", action = act.AdjustPaneSize({ "Down", 1 }) },
-			{ key = "k", action = act.AdjustPaneSize({ "Up", 1 }) },
-			{ key = "l", action = act.AdjustPaneSize({ "Right", 1 }) },
-			{ key = "Escape", action = "PopKeyTable" },
-			{ key = "Enter", action = "PopKeyTable" },
-		},
-		move_tab = {
-			{ key = "h", action = act.MoveTabRelative(-1) },
-			{ key = "j", action = act.MoveTabRelative(-1) },
-			{ key = "k", action = act.MoveTabRelative(1) },
-			{ key = "l", action = act.MoveTabRelative(1) },
+			{ key = "h", action = act.AdjustPaneSize({ "Left", 2 }) },
+			{ key = "j", action = act.AdjustPaneSize({ "Down", 2 }) },
+			{ key = "k", action = act.AdjustPaneSize({ "Up", 2 }) },
+			{ key = "l", action = act.AdjustPaneSize({ "Right", 2 }) },
 			{ key = "Escape", action = "PopKeyTable" },
 			{ key = "Enter", action = "PopKeyTable" },
 		},

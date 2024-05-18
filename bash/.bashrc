@@ -129,14 +129,14 @@ _fzf_compgen_path() {
 _fzf_compgen_dir() {
 	fd --type d --hidden --no-follow
 }
-export FZF_DEFAULT_OPTS="\
---height=90% \
---layout reverse \
---pointer "➜" \
---cycle  --inline-info \
---color=bg+:#1e1e2e,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8 \
---color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
---color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8"
+# export FZF_DEFAULT_OPTS="\
+# --height=90% \
+# --layout reverse \
+# --pointer "➜" \
+# --cycle  --inline-info \
+# --color=bg+:#1e1e2e,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8 \
+# --color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
+# --color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8"
 #
 ### NNN
 export NNN_OPENER=nvim

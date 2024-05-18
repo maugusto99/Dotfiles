@@ -1,9 +1,12 @@
 local wezterm = require("wezterm")
 local act = wezterm.action
 
+require("util").setup()
+
 local M = {} -- This is Module definition
 
-M.mod = "SHIFT|CTRL"
+M.mod = "CTRL|SHIFT"
+M.altmod = "CTRL|ALT"
 
 M.smart_split = wezterm.action_callback(function(window, pane)
 	local dim = pane:get_dimensions()
@@ -13,7 +16,7 @@ M.smart_split = wezterm.action_callback(function(window, pane)
 		window:perform_action(act.SplitHorizontal({ domain = "CurrentPaneDomain" }), pane)
 	end
 end)
-
+-- Define a setup to function to call in wezterm.lua
 function M.setup(config)
 	config.disable_default_key_bindings = true
 
@@ -21,6 +24,9 @@ function M.setup(config)
 		-- Scrollback
 		{ mods = M.mod, key = "k", action = act.ScrollByLine(-1) },
 		{ mods = M.mod, key = "j", action = act.ScrollByLine(1) },
+		{ mods = M.mod, key = "u", action = act.ScrollByPage(-0.5) },
+		{ mods = M.mod, key = "d", action = act.ScrollByPage(0.5) },
+
 		-- New Tab
 		{ mods = M.mod, key = "t", action = act.SpawnTab("CurrentPaneDomain") },
 		-- Splits
@@ -31,19 +37,19 @@ function M.setup(config)
 		{ mods = M.mod, key = ">", action = act.MoveTabRelative(1) },
 		{ mods = M.mod, key = "<", action = act.MoveTabRelative(-1) },
 		-- Acivate Tabs
-		{ mods = M.mod, key = "l", action = act({ ActivateTabRelative = 1 }) },
-		{ mods = M.mod, key = "h", action = act({ ActivateTabRelative = -1 }) },
+		{ mods = M.mod, key = "]", action = act({ ActivateTabRelative = 1 }) },
+		{ mods = M.mod, key = "[", action = act({ ActivateTabRelative = -1 }) },
 		{ mods = M.mod, key = "R", action = wezterm.action.RotatePanes("Clockwise") },
 		{ key = "Tab", mods = "CTRL", action = act({ ActivateTabRelative = 1 }) },
 		{ key = "Tab", mods = "CTRL|SHIFT", action = act({ ActivateTabRelative = -1 }) },
 		-- Activate Panes
-		{ key = "h", mods = "ALT|CTRL", action = act.ActivatePaneDirection("Left") },
-		{ key = "l", mods = "ALT|CTRL", action = act.ActivatePaneDirection("Right") },
-		{ key = "k", mods = "ALT|CTRL", action = act.ActivatePaneDirection("Up") },
-		{ key = "j", mods = "ALT|CTRL", action = act.ActivatePaneDirection("Down") },
+		{ key = "h", mods = M.altmod, action = act.ActivatePaneDirection("Left") },
+		{ key = "l", mods = M.altmod, action = act.ActivatePaneDirection("Right") },
+		{ key = "k", mods = M.altmod, action = act.ActivatePaneDirection("Up") },
+		{ key = "j", mods = M.altmod, action = act.ActivatePaneDirection("Down") },
 
 		-- Activate pane interactive
-		{ key = "s", mods = "ALT|CTRL", action = act.PaneSelect({ mode = "Activate" }) },
+		{ key = "s", mods = M.altmod, action = act.PaneSelect({ mode = "Activate" }) },
 
 		-- show the pane selection mode, but have it swap the active and selected panes
 		{ mods = M.mod, key = "S", action = wezterm.action.PaneSelect({ mode = "SwapWithActive" }) },
@@ -62,11 +68,12 @@ function M.setup(config)
 		{ mods = "CTRL", key = "-", action = act.DecreaseFontSize },
 		{ mods = "CTRL", key = "Backspace", action = act.ResetFontSize },
 
-		-- Open new tab in distrobox host
+		{ mods = M.mod, key = "e", action = act.EmitEvent("trigger-nvim-with-scrollback") },
+		-- Open Launcher
 		{
-			key = "d",
+			key = "l",
 			mods = M.mod,
-			action = wezterm.action.SpawnCommandInNewTab({ args = { "distrobox-host-exec", "bash" } }),
+			action = wezterm.action.ShowLauncher,
 		},
 
 		{ key = "PageUp", mods = "CTRL|SHIFT", action = act.ScrollByPage(-1) },

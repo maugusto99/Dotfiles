@@ -42,6 +42,12 @@ format = '[$user]($style)'
 disabled = true
 show_always = true
 
+[sudo]
+disabled = false
+style = 'yellow'
+symbol = '👩‍💻 '
+format = '[as $symbol]($style)'
+
 [container]
 disabled = true
 

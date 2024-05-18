@@ -326,15 +326,13 @@ filextype */
         \ dolphin %f &,
 
 
-" fileviewer {*.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm},<image/*>
-"        \ wezterm imgcat --width %pw --height %ph %c:p %pd
-
-fileviewer *.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm
-		   \ kitty kitten icat --transfer-mode=file --place=%pwx%ph@%pxx%py %c
-		   \ %pc
-		   \ kitty kitten icat --transfer-mode=file --clear
+fileviewer {*.jpg,*.jpeg,*.png,*.gif}
+    \ kitten icat --silent --transfer-mode=file --place=%pwx%ph@%pxx%py %c >/dev/tty </dev/tty %N
+    \ %pc
+    \ kitten icat --clear --silent >/dev/tty </dev/tty %N
 
 fileviewer *[^\/],.*[^\/]  bat --color always --wrap never --pager never %c -p
+
 fileviewer */,.*/ eza -a -T --icons=always --color=always -L 2
 
 
@@ -344,7 +342,7 @@ fileviewer */,.*/ eza -a -T --icons=always --color=always -L 2
 " ------------------------------------------------------------------------------
 
 " Customize view columns a bit (enable ellipsis for truncated file names)
-set viewcolumns=-{name}..,6{}.
+"set viewcolumns=-{name}..,6{}.
 
 " Show vertical border
 " set fillchars=vborder:│
@@ -472,6 +470,6 @@ nnoremap <a-o> :sync %c<cr>
 
 set grepprg='rg --vimgrep --smart-case %i %a %s'
 set findprg="fd --color never --hidden %p"
-set shell=/bin/fish
-let $SHELL = '/usr/bin/fish'
+" set shell=/bin/fish
+" let $SHELL = '/usr/bin/fish'
 source ~/.config/vifm/favicons.vifm

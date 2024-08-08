@@ -86,7 +86,7 @@
 # Authors: Todd Yamakawa, Léo Villeveygoux, @Recidiviste, Mario Ortiz Manero, Luuk van Baal, @WanderLanz
 
 NNN_SPLIT=${NNN_SPLIT:-}           # Set permanent split direction
-NNN_TERMINAL=${NNN_TERMINAL:rio}   # Set external terminal to be used
+NNN_TERMINAL=${NNN_TERMINAL:kitty}   # Set external terminal to be used
 NNN_SPLITSIZE=${NNN_SPLITSIZE:-50} # Set previewer split size percentage
 TMPDIR=${TMPDIR:-/tmp}
 NNN_PARENT=${NNN_FIFO#*.}
@@ -99,7 +99,7 @@ ENVVARS=(
 	"NNN_PISTOL=${NNN_PISTOL:-0}"
 	"NNN_ICONLOOKUP=${NNN_ICONLOOKUP:-0}"
 	"NNN_PAGER=${NNN_PAGER:-less -P?n -R -C}"
-	"NNN_BATTHEME=${NNN_BATTHEME:-ansi}"
+	"NNN_BATTHEME=${NNN_BATTHEME:${BAT_THEME}}"
 	"NNN_BATSTYLE=${NNN_BATSTYLE:-numbers}"
 	"NNN_PREVIEWWIDTH=${NNN_PREVIEWWIDTH:-1920}"
 	"NNN_PREVIEWHEIGHT=${NNN_PREVIEWHEIGHT:-1080}"

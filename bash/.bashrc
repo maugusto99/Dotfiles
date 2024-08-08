@@ -103,7 +103,7 @@ export EDITOR=vim
 
 alias vi="$EDITOR"
 export BROWSER=firefox
-export TERMINAL=gnome-console
+export TERMINAL=kitty
 export LESSHISTFILE="-"
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export MANROFFOPT="-c"
@@ -140,6 +140,7 @@ _fzf_compgen_dir() {
 #
 ### NNN
 export NNN_OPENER=nvim
+export BAT_THEME=tokyonight_night
 export NNN_PLUG='f:finder;p:preview-tui;d:diffs;c:fzcd;z:autojump;g:getplugs'
 export NNN_OPTS="AdeiuHUQx"
 export NNN_FCOLORS=030304020000060801030500 # filetype colors. this mimics dircolors

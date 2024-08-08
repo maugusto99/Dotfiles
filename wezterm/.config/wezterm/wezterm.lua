@@ -18,12 +18,16 @@ config.force_reverse_video_cursor = true
 config.color_scheme = "Catppuccin Mocha"
 
 config.initial_cols = 140
-config.initial_rows = 30
-config.window_padding = { left = 1, right = 1, top = 1, bottom = 1 }
+config.initial_rows = 32
+config.window_padding = { left = 3, right = 3, top = 3, bottom = 3 }
+
+config.underline_thickness = 3
+config.cursor_thickness = 3
+config.underline_position = -6
 
 config.default_cursor_style = "SteadyBar"
 
-config.font_size = 10.0
+config.font_size = 11.0
 config.font = wezterm.font({
 	family = "JetBrains Mono",
 })

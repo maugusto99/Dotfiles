@@ -99,7 +99,7 @@ alias egrep='egrep --color=auto'
 # Exports
 export PATH=/home/augustom/.local/bin:$PATH
 
-export EDITOR=vim
+export EDITOR=nvim
 
 alias vi="$EDITOR"
 export BROWSER=firefox
@@ -140,7 +140,6 @@ _fzf_compgen_dir() {
 #
 ### NNN
 export NNN_OPENER=nvim
-export BAT_THEME=tokyonight_night
 export NNN_PLUG='f:finder;p:preview-tui;d:diffs;c:fzcd;z:autojump;g:getplugs'
 export NNN_OPTS="AdeiuHUQx"
 export NNN_FCOLORS=030304020000060801030500 # filetype colors. this mimics dircolors
